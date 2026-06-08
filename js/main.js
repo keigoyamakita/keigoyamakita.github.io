@@ -4,9 +4,15 @@ document.getElementById('year').textContent = new Date().getFullYear();
 // Hamburger
 const navToggle = document.querySelector('.nav-toggle');
 const navLinks  = document.querySelector('.nav-links');
-navToggle.addEventListener('click', () => navLinks.classList.toggle('open'));
+navToggle.addEventListener('click', () => {
+  navLinks.classList.toggle('open');
+  navToggle.classList.toggle('open');
+});
 navLinks.querySelectorAll('a').forEach(a =>
-  a.addEventListener('click', () => navLinks.classList.remove('open'))
+  a.addEventListener('click', () => {
+    navLinks.classList.remove('open');
+    navToggle.classList.remove('open');
+  })
 );
 
 // Smooth scroll
