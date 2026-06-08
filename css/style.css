@@ -660,8 +660,21 @@ ul { list-style: none; }
   .nav-caret { display: none; }
 
   /* その他レスポンシブ */
-  .hero-inner { grid-template-columns: 1fr; }
-  .avatar { display: none; }
+  .hero-inner {
+    grid-template-columns: 1fr;
+    justify-items: center;
+    text-align: center;
+  }
+  .hero-text { order: 2; }
+  .avatar {
+    display: flex;
+    order: 1;
+    width: 120px;
+    height: 120px;
+    margin-bottom: 0.5rem;
+  }
+  .btn-group { justify-content: center; }
+  .hero-desc { margin-left: auto; margin-right: auto; }
   .about-grid { grid-template-columns: 1fr; }
   .contact-grid { grid-template-columns: 1fr; }
 }
