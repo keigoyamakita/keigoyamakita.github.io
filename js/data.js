@@ -163,10 +163,27 @@ const PORTFOLIO_DATA = {
   ],
 
   // ===========================
+  // 資格・免許
+  // ===========================
+  licenses: [
+    {
+      year: '2025',
+      title: '中学校教諭一種免許状（理科）',
+      org: '文部科学省',
+    },
+    {
+      year: '2025',
+      title: '高等学校教諭一種免許状（理科）',
+      org: '文部科学省',
+    },
+  ],
+
+  // ===========================
   // 連絡先
   // ===========================
   contact: [
     { icon: '✉', label: 'Email', sub: 'k5ykrennraku{at}gmail.com', href: 'mailto:k5ykrennraku@gmail.com' },
+    { icon: '💼', label: 'LinkedIn', sub: 'keigoyamakita1024', href: 'https://www.linkedin.com/in/keigoyamakita1024/' },
   ],
 
 };

@@ -46,8 +46,8 @@ document.addEventListener('DOMContentLoaded', () => {
     a.addEventListener('click', e => {
       e.preventDefault();
       const text = a.textContent.trim();
-      if (text === '原著論文')  openAndScroll('anchor-papers');
-      if (text === '学会発表')  openAndScroll('anchor-presentations');
+      if (text === '掲載論文（共著含む）')  openAndScroll('anchor-papers');
+      if (text === '学会発表（共著含む）')  openAndScroll('anchor-presentations');
     });
   });
 });
@@ -140,6 +140,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const awardWrap = document.getElementById('awardList');
   if (awardWrap) awardWrap.innerHTML = PORTFOLIO_DATA.awards.map(awardItemHTML).join('');
+
+  // Licenses
+  const licenseWrap = document.getElementById('licenseList');
+  if (licenseWrap) {
+    licenseWrap.innerHTML = PORTFOLIO_DATA.licenses.map(l => `
+      <div class="pub-item reveal">
+        <div class="pub-year">${l.year}</div>
+        <div class="pub-title">${l.title}</div>
+        <div class="pub-venue">${l.org}</div>
+      </div>`).join('');
+  }
 
   renderSkills();
   renderContact();
