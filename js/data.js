@@ -20,6 +20,30 @@ const PORTFOLIO_DATA = {
   // ===========================
   presentations: [
     {
+      year: '2026年7月',
+      type: 'ポスター · 口頭',
+      title: 'Establishment of a chromatin structure-based method for evaluating non-genotoxic genome instability using ATAC-seq',
+      authors: '<strong>Keigo YAMAKITA</strong>、他7名',
+      venue: '日本毒性学会 学術年会（大阪）',
+      tags: ['ATAC-seq', 'クロマチン', '非遺伝毒性'],
+    },
+    {
+      year: '2026年7月',
+      type: 'ポスター',
+      title: 'Chronic genomic stress induces elevated A-to-I RNA editing in transcripts associated with auxiliary DNA repair pathways',
+      authors: 'Sujin SONG、<strong>Keigo YAMAKITA</strong>、他5名',
+      venue: '日本RNA学会 年会',
+      tags: ['RNA editing', 'DNA repair'],
+    },
+    {
+      year: '2026年6月',
+      type: 'ポスター',
+      title: 'クロマチンアクセシビリティ解析による非遺伝毒性ゲノム不安定性の評価指標の検討',
+      authors: '<strong>山北 啓吾</strong>、他7名',
+      venue: '第19回日本エピジェネティクス研究会年会（千葉）',
+      tags: ['ATAC-seq', 'クロマチン', 'エピゲノム'],
+    },
+    {
       year: '2025年11月',
       type: 'ポスター · 口頭',
       title: 'ATAC-seqを用いたクロマチン構造を基準とした高次ゲノム不安定性評価法の確立',
@@ -160,6 +184,12 @@ const PORTFOLIO_DATA = {
       category: 'Data Analysis',
       items: ['ggplot2', 'Jupyter'],
     },
+  ],
+
+  // ===========================
+  // 制作物（解析ツール・アプリ）
+  // ===========================
+  works: [
   ],
 
   // ===========================

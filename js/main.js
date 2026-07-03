@@ -77,6 +77,25 @@ function renderList(id, items) {
   if (wrap) wrap.innerHTML = items.map(pubItemHTML).join('');
 }
 
+// 学会発表：年ごとにグループ化し、タップで開閉するdetailsに格納
+function renderPresentationsByYear(id, items) {
+  const wrap = document.getElementById(id);
+  if (!wrap) return;
+
+  const groups = new Map();
+  items.forEach(p => {
+    const y = (p.year.match(/^\d{4}/) || [p.year])[0];
+    if (!groups.has(y)) groups.set(y, []);
+    groups.get(y).push(p);
+  });
+
+  wrap.innerHTML = [...groups.entries()].map(([year, list]) => `
+    <details class="collapsible year-group">
+      <summary class="subsection-title">${year}年（${list.length}件）</summary>
+      <div class="pub-list">${list.map(pubItemHTML).join('')}</div>
+    </details>`).join('');
+}
+
 // Awards（descのみ、venueなし）
 function awardItemHTML(a) {
   const inner = `
@@ -88,6 +107,31 @@ function awardItemHTML(a) {
     return `<a class="pub-item pub-item-link reveal" href="${a.link}" target="_blank" rel="noopener">${inner}</a>`;
   }
   return `<div class="pub-item reveal">${inner}</div>`;
+}
+
+// Works（制作物）
+function workItemHTML(w) {
+  const tags = w.tags && w.tags.length
+    ? `<div class="pub-tags">${w.tags.map(t => `<span class="tag">${t}</span>`).join('')}</div>`
+    : '';
+  const desc = w.desc ? `<div class="pub-desc">${w.desc}</div>` : '';
+  const inner = `
+      <div class="pub-year">${w.year || ''}</div>
+      <div class="pub-title">${w.title}</div>
+      ${desc}${tags}`;
+  if (w.link) {
+    return `<a class="pub-item pub-item-link reveal" href="${w.link}" target="_blank" rel="noopener">${inner}</a>`;
+  }
+  return `<div class="pub-item reveal">${inner}</div>`;
+}
+
+function renderWorks() {
+  const wrap = document.getElementById('worksList');
+  if (!wrap) return;
+  const works = PORTFOLIO_DATA.works || [];
+  wrap.innerHTML = works.length
+    ? works.map(workItemHTML).join('')
+    : '<p class="section-sub" style="margin:0">準備中です。近日公開予定。</p>';
 }
 
 // Skills
@@ -135,8 +179,8 @@ function initReveal() {
 
 // Init
 document.addEventListener('DOMContentLoaded', () => {
-  renderList('paperList',        PORTFOLIO_DATA.papers);
-  renderList('presentationList', PORTFOLIO_DATA.presentations);
+  renderList('paperList', PORTFOLIO_DATA.papers);
+  renderPresentationsByYear('presentationList', PORTFOLIO_DATA.presentations);
 
   const awardWrap = document.getElementById('awardList');
   if (awardWrap) awardWrap.innerHTML = PORTFOLIO_DATA.awards.map(awardItemHTML).join('');
@@ -153,6 +197,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   renderSkills();
+  renderWorks();
   renderContact();
 
   document.querySelectorAll('.info-card').forEach(el => el.classList.add('reveal'));

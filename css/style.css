@@ -83,8 +83,7 @@ ul { list-style: none; }
 .section { padding: 5rem 0; }
 
 .section-alt {
-  background: rgba(22, 27, 34, 0.45);
-  backdrop-filter: blur(1px);
+  background: rgba(22, 27, 34, 0.6);
   border-top: 1px solid var(--border);
   border-bottom: 1px solid var(--border);
 }
@@ -146,8 +145,7 @@ ul { list-style: none; }
   align-items: center;
   justify-content: space-between;
   padding: 0 2rem;
-  background: rgba(13, 17, 23, 0.85);
-  backdrop-filter: blur(12px);
+  background: rgba(13, 17, 23, 0.96);
   border-bottom: 1px solid var(--border);
 }
 .nav-logo {
