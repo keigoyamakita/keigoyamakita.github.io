@@ -214,6 +214,8 @@ const PORTFOLIO_DATA = {
   contact: [
     { icon: '✉', label: 'Email', sub: 'k5ykrennraku{at}gmail.com', href: 'mailto:k5ykrennraku@gmail.com' },
     { icon: '💼', label: 'LinkedIn', sub: 'keigoyamakita1024', href: 'https://www.linkedin.com/in/keigoyamakita1024/' },
+    { icon: '🐙', label: 'GitHub', sub: '@keigoyamakita', href: 'https://github.com/keigoyamakita' },
+    { icon: '🔬', label: '所属研究室', sub: 'クロマチン代謝制御研究室', href: 'https://uralab.wordpress.com' },
   ],
 
 };

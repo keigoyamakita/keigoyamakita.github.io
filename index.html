@@ -57,7 +57,9 @@
   </script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+  <!-- フォントCSSは非同期で読み込み、初回描画をブロックしないようにする -->
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+JP:wght@400;500;700&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet"></noscript>
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -108,7 +110,7 @@
           </div>
         </div>
         <div class="avatar">
-          <img src="images/graduate_profile.jpeg" alt="山北啓吾">
+          <img src="images/graduate_profile.jpeg" alt="山北啓吾" width="340" height="453">
         </div>
       </div>
     </div>
@@ -164,19 +166,21 @@
   <!-- Research -->
   <section id="research" class="section section-alt">
     <div class="container">
-      <details class="section-collapsible">
+      <details class="section-collapsible" open>
         <summary class="section-title">研究・発表</summary>
         <p class="section-sub">論文・学会発表</p>
 
-        <details class="collapsible" id="anchor-papers">
-          <summary class="subsection-title">掲載論文（共著含む）</summary>
+        <div class="subsection-block" id="anchor-papers">
+          <h3 class="subsection-heading">掲載論文（共著含む）</h3>
           <div class="pub-list" id="paperList"></div>
-        </details>
+        </div>
 
-        <details class="collapsible" id="anchor-presentations">
-          <summary class="subsection-title">学会発表（共著含む）</summary>
-          <div class="pub-list" id="presentationList"></div>
-        </details>
+        <div class="subsection-block" id="anchor-presentations">
+          <h3 class="subsection-heading">学会発表（共著含む）</h3>
+          <div class="pub-list" id="presentationPreview"></div>
+          <div class="pub-list-rest" id="presentationRest" hidden></div>
+          <button type="button" class="show-more-btn" id="presentationToggle" aria-expanded="false"></button>
+        </div>
       </details>
     </div>
   </section>
@@ -184,10 +188,12 @@
   <!-- Awards -->
   <section id="awards" class="section">
     <div class="container">
-      <details class="section-collapsible">
+      <details class="section-collapsible" open>
         <summary class="section-title">受賞・奨学金</summary>
         <p class="section-sub">学会賞・奨学金・表彰</p>
-        <div class="pub-list" id="awardList"></div>
+        <div class="pub-list" id="awardPreview"></div>
+        <div class="pub-list pub-list-rest" id="awardRest" hidden></div>
+        <button type="button" class="show-more-btn" id="awardToggle" aria-expanded="false"></button>
       </details>
     </div>
   </section>
@@ -195,7 +201,7 @@
   <!-- Licenses -->
   <section id="licenses" class="section">
     <div class="container">
-      <details class="section-collapsible">
+      <details class="section-collapsible" open>
         <summary class="section-title">資格・免許</summary>
         <p class="section-sub">取得資格・教員免許</p>
         <div class="pub-list" id="licenseList"></div>
@@ -217,7 +223,7 @@
   <!-- Works -->
   <section id="works" class="section">
     <div class="container">
-      <details class="section-collapsible">
+      <details class="section-collapsible" open>
         <summary class="section-title">制作物</summary>
         <p class="section-sub">解析ツール・アプリケーション</p>
         <div class="pub-list" id="worksList"></div>

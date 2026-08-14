@@ -358,11 +358,13 @@ ul { list-style: none; }
   cursor: pointer;
   list-style: none;
   justify-content: space-between;
+  transition: color 0.2s;
 }
+.section-collapsible > .section-title:hover { color: var(--accent); }
 .section-collapsible > .section-title::-webkit-details-marker { display: none; }
 
 .section-collapsible > .section-title::after {
-  content: 'tap ▾';
+  content: '閉じる ▾';
   font-size: 0.8rem;
   font-weight: 400;
   color: var(--text2);
@@ -370,9 +372,11 @@ ul { list-style: none; }
   margin-left: 0.5rem;
   font-family: var(--font-mono);
   letter-spacing: 0.03em;
+  transition: color 0.2s;
 }
+.section-collapsible > .section-title:hover::after { color: var(--accent); }
 .section-collapsible:not([open]) > .section-title::after {
-  content: 'tap ▸';
+  content: '開く ▸';
 }
 
 /* ===========================
@@ -406,7 +410,7 @@ ul { list-style: none; }
 .subsection-title::-webkit-details-marker { display: none; }
 
 .subsection-title::after {
-  content: 'tap ▾';
+  content: '閉じる ▾';
   font-size: 0.78rem;
   color: var(--text2);
   font-family: var(--font-mono);
@@ -414,8 +418,39 @@ ul { list-style: none; }
 }
 
 .collapsible:not([open]) .subsection-title::after {
-  content: 'tap ▸';
+  content: '開く ▸';
 }
+
+/* 開閉しない小見出し（論文・学会発表など、プレビュー表示するブロック用） */
+.subsection-block { margin-top: 2.5rem; }
+.subsection-block + .subsection-block { margin-top: 1.5rem; }
+.subsection-heading {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text2);
+  letter-spacing: 0.02em;
+  margin-bottom: 1rem;
+}
+
+.pub-list-rest { margin-top: 0.75rem; }
+.pub-list-rest[hidden] { display: none; }
+
+.show-more-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-top: 1rem;
+  padding: 0.55rem 1.1rem;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: transparent;
+  color: var(--text2);
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: border-color 0.2s, color 0.2s;
+}
+.show-more-btn:hover { border-color: var(--accent); color: var(--accent); }
 
 .subsection-title:hover {
   background: rgba(255,255,255,0.04);
@@ -665,4 +700,17 @@ ul { list-style: none; }
   .hero-desc { margin-left: auto; margin-right: auto; }
   .about-grid { grid-template-columns: 1fr; }
   .contact-grid { grid-template-columns: 1fr; }
+
+  /* セクション間の余白をスマホでは少し詰める */
+  .section { padding: 3.5rem 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  * { transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; }
 }

@@ -4,14 +4,17 @@ document.getElementById('year').textContent = new Date().getFullYear();
 // Hamburger
 const navToggle = document.querySelector('.nav-toggle');
 const navLinks  = document.querySelector('.nav-links');
+navToggle.setAttribute('aria-expanded', 'false');
 navToggle.addEventListener('click', () => {
-  navLinks.classList.toggle('open');
+  const isOpen = navLinks.classList.toggle('open');
   navToggle.classList.toggle('open');
+  navToggle.setAttribute('aria-expanded', String(isOpen));
 });
 navLinks.querySelectorAll('a').forEach(a =>
   a.addEventListener('click', () => {
     navLinks.classList.remove('open');
     navToggle.classList.remove('open');
+    navToggle.setAttribute('aria-expanded', 'false');
   })
 );
 
@@ -25,15 +28,18 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
   });
 });
 
-// ドロップダウン：原著論文・学会発表クリック時にdetailsを開いてスクロール
+// ドロップダウン：原著論文・学会発表クリック時にスクロール（研究セクションは常時展開済み）
 function openAndScroll(anchorId) {
-  // research セクション全体を開く
   const sectionDetails = document.querySelector('#research .section-collapsible');
   if (sectionDetails) sectionDetails.open = true;
-  // 対象のdetailsを開く
+  if (anchorId === 'anchor-presentations') {
+    const toggle = document.getElementById('presentationToggle');
+    if (toggle && toggle.getAttribute('aria-expanded') !== 'true' && toggle.style.display !== 'none') {
+      toggle.click();
+    }
+  }
   const target = document.getElementById(anchorId);
   if (target) {
-    target.open = true;
     setTimeout(() => {
       window.scrollTo({ top: target.getBoundingClientRect().top + scrollY - 80, behavior: 'smooth' });
     }, 50);
@@ -77,23 +83,71 @@ function renderList(id, items) {
   if (wrap) wrap.innerHTML = items.map(pubItemHTML).join('');
 }
 
-// 学会発表：年ごとにグループ化し、タップで開閉するdetailsに格納
-function renderPresentationsByYear(id, items) {
-  const wrap = document.getElementById(id);
-  if (!wrap) return;
-
-  const groups = new Map();
-  items.forEach(p => {
-    const y = (p.year.match(/^\d{4}/) || [p.year])[0];
-    if (!groups.has(y)) groups.set(y, []);
-    groups.get(y).push(p);
+// 「すべて見る」トグルの共通配線。プレビューの下に隠れているrestWrapの表示/非表示を切り替える。
+function wireShowMore(toggleId, restWrap, restCount) {
+  const toggle = document.getElementById(toggleId);
+  if (!toggle) return;
+  if (!restCount) {
+    toggle.style.display = 'none';
+    return;
+  }
+  const labelMore = `すべて見る（${restCount}件）`;
+  toggle.textContent = labelMore;
+  toggle.addEventListener('click', () => {
+    const willExpand = toggle.getAttribute('aria-expanded') !== 'true';
+    toggle.setAttribute('aria-expanded', String(willExpand));
+    if (restWrap) restWrap.hidden = !willExpand;
+    toggle.textContent = willExpand ? '閉じる' : labelMore;
+    if (willExpand && restWrap) {
+      // ユーザー操作による明示的な展開なので、スクロール連動アニメーションを待たずに即表示する
+      restWrap.querySelectorAll('.reveal').forEach(el => el.classList.add('visible'));
+    }
   });
+}
 
-  wrap.innerHTML = [...groups.entries()].map(([year, list]) => `
-    <details class="collapsible year-group">
-      <summary class="subsection-title">${year}年（${list.length}件）</summary>
-      <div class="pub-list">${list.map(pubItemHTML).join('')}</div>
-    </details>`).join('');
+// 学会発表：直近3件を先に表示し、残りは年ごとにグループ化して「すべて見る」の裏に格納
+function renderPresentations(items) {
+  const previewWrap = document.getElementById('presentationPreview');
+  const restWrap = document.getElementById('presentationRest');
+  if (!previewWrap) return;
+
+  const PREVIEW_N = 3;
+  const preview = items.slice(0, PREVIEW_N);
+  const rest = items.slice(PREVIEW_N);
+
+  previewWrap.innerHTML = preview.map(pubItemHTML).join('');
+
+  if (rest.length && restWrap) {
+    const groups = new Map();
+    rest.forEach(p => {
+      const y = (p.year.match(/^\d{4}/) || [p.year])[0];
+      if (!groups.has(y)) groups.set(y, []);
+      groups.get(y).push(p);
+    });
+    restWrap.innerHTML = [...groups.entries()].map(([year, list]) => `
+      <details class="collapsible year-group">
+        <summary class="subsection-title">${year}年（${list.length}件）</summary>
+        <div class="pub-list">${list.map(pubItemHTML).join('')}</div>
+      </details>`).join('');
+  }
+
+  wireShowMore('presentationToggle', restWrap, rest.length);
+}
+
+// 受賞・奨学金：最新1件を先に表示し、残りは「すべて見る」の裏に格納
+function renderAwards(items) {
+  const previewWrap = document.getElementById('awardPreview');
+  const restWrap = document.getElementById('awardRest');
+  if (!previewWrap) return;
+
+  const PREVIEW_N = 1;
+  const preview = items.slice(0, PREVIEW_N);
+  const rest = items.slice(PREVIEW_N);
+
+  previewWrap.innerHTML = preview.map(awardItemHTML).join('');
+  if (rest.length && restWrap) restWrap.innerHTML = rest.map(awardItemHTML).join('');
+
+  wireShowMore('awardToggle', restWrap, rest.length);
 }
 
 // Awards（descのみ、venueなし）
@@ -180,10 +234,8 @@ function initReveal() {
 // Init
 document.addEventListener('DOMContentLoaded', () => {
   renderList('paperList', PORTFOLIO_DATA.papers);
-  renderPresentationsByYear('presentationList', PORTFOLIO_DATA.presentations);
-
-  const awardWrap = document.getElementById('awardList');
-  if (awardWrap) awardWrap.innerHTML = PORTFOLIO_DATA.awards.map(awardItemHTML).join('');
+  renderPresentations(PORTFOLIO_DATA.presentations);
+  renderAwards(PORTFOLIO_DATA.awards);
 
   // Licenses
   const licenseWrap = document.getElementById('licenseList');
