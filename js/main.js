@@ -1,6 +1,17 @@
 // Year
 document.getElementById('year').textContent = new Date().getFullYear();
 
+// Back to Top
+const backToTop = document.getElementById('backToTop');
+if (backToTop) {
+  window.addEventListener('scroll', () => {
+    backToTop.classList.toggle('visible', window.scrollY > 480);
+  });
+  backToTop.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+}
+
 // Hamburger
 const navToggle = document.querySelector('.nav-toggle');
 const navLinks  = document.querySelector('.nav-links');
@@ -58,6 +69,25 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 });
 
+// 発表形式（type文字列）から対応するアイコンを組み立てる
+function typeIcon(type) {
+  if (!type) return '';
+  let icons = '';
+  if (type.includes('Journal') || type.includes('論文')) icons += '📄';
+  if (type.includes('ポスター')) icons += '🖼️';
+  if (type.includes('口頭')) icons += '🎤';
+  return icons ? `${icons} ` : '';
+}
+
+// 受賞・奨学金の種別からアイコンを組み立てる
+function awardTypeIcon(type) {
+  if (!type) return '';
+  if (type.includes('学会賞')) return '🏆 ';
+  if (type.includes('奨学金')) return '🎓 ';
+  if (type.includes('表彰')) return '🎖️ ';
+  return '';
+}
+
 // 共通：pub-itemを生成
 function pubItemHTML(p) {
   const tags = p.tags && p.tags.length
@@ -71,9 +101,9 @@ function pubItemHTML(p) {
     : '';
   return `
     <div class="pub-item reveal">
-      <div class="pub-year">${p.year} · ${p.type}</div>
+      <div class="pub-year">${p.year} · ${typeIcon(p.type)}${p.type}</div>
       <div class="pub-title">${p.title}</div>
-      <div class="pub-venue"><span style="color:var(--text)">${p.authors}</span> · <em>${p.venue}</em></div>
+      <div class="pub-venue"><span style="color:var(--text)">${p.authors}</span> · <span class="pub-venue-name">${p.venue}</span></div>
       ${desc}${tags}${link}
     </div>`;
 }
@@ -153,7 +183,7 @@ function renderAwards(items) {
 // Awards（descのみ、venueなし）
 function awardItemHTML(a) {
   const inner = `
-      <div class="pub-year">${a.year} · ${a.type}</div>
+      <div class="pub-year">${a.year} · ${awardTypeIcon(a.type)}${a.type}</div>
       <div class="pub-title">${a.title}</div>
       <div class="pub-venue">${a.org}</div>
       ${a.desc ? `<div class="pub-desc">${a.desc}</div>` : ''}`;
