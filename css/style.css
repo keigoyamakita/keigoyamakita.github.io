@@ -387,6 +387,13 @@ ul { list-style: none; }
 }
 .card-link:hover { color: var(--accent); border-bottom-color: var(--accent); }
 
+.org-period {
+  font-size: 0.78rem;
+  font-family: var(--font-mono);
+  color: var(--text2);
+  margin-left: 0.35rem;
+}
+
 /* ===========================
    Section-level Collapsible
 =========================== */
