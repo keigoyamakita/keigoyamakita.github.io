@@ -309,7 +309,7 @@ ul { list-style: none; }
 }
 .name-ruby rt {
   font-size: 0.3em;
-  font-weight: 500;
+  font-weight: 400;
   color: var(--text2);
   letter-spacing: 0.08em;
   user-select: none;
