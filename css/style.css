@@ -274,11 +274,11 @@ ul { list-style: none; }
   overflow: hidden;
 }
 
-.hero .container { position: relative; z-index: 1; }
+.hero .container { position: relative; z-index: 1; max-width: 1160px; }
 .hero-inner {
   display: grid;
   grid-template-columns: 1fr auto;
-  gap: 3rem;
+  gap: 4rem;
   align-items: center;
   width: 100%;
 }
@@ -371,12 +371,12 @@ ul { list-style: none; }
 .hero-desc {
   color: var(--text2);
   font-size: 0.9rem;
-  max-width: 480px;
+  max-width: 540px;
   margin-bottom: 2rem;
   line-height: 1.8;
 }
 .avatar {
-  width: 160px; height: 160px;
+  width: 200px; height: 200px;
   border-radius: 50%;
   background: var(--bg3);
   border: 2px solid var(--border);
