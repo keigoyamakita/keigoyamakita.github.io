@@ -109,7 +109,13 @@
     <div class="container">
       <div class="hero-inner">
         <div class="hero-text">
-          <div class="hero-label">バイオインフォマティクス</div>
+          <div class="hero-label">
+            <span class="hl-node">Life Science</span>
+            <span class="hl-connector" aria-hidden="true"></span>
+            <span class="hl-node">Data Analysis</span>
+            <span class="hl-connector" aria-hidden="true"></span>
+            <span class="hl-node">Problem Solving</span>
+          </div>
           <h1><ruby class="name-ruby">山北<rt>やまきた</rt></ruby><ruby class="name-ruby">啓吾<rt>けいご</rt></ruby><br><span class="hero-name-sub">Keigo YAMAKITA</span></h1>
           <p class="hero-sub"><a href="http://www.bio.s.chiba-u.ac.jp/index.html" target="_blank" rel="noopener" class="hero-sub-link">千葉大学大学院 融合理工学府 先進理化学専攻 生物学コース</a></p>
           <p class="hero-desc">
@@ -204,11 +210,22 @@
   <section id="awards" class="section">
     <div class="container">
       <details class="section-collapsible" open>
-        <summary class="section-title">受賞・奨学金</summary>
-        <p class="section-sub">学会賞・奨学金・表彰</p>
-        <div class="pub-list" id="awardPreview"></div>
-        <div class="pub-list pub-list-rest" id="awardRest" hidden></div>
-        <button type="button" class="show-more-btn" id="awardToggle" aria-expanded="false"></button>
+        <summary class="section-title">受賞・採択・奨学金</summary>
+        <p class="section-sub">学会賞・表彰・採択・奨学金</p>
+
+        <div class="subsection-block" id="anchor-awards">
+          <h3 class="subsection-heading">受賞・表彰</h3>
+          <div class="pub-list" id="awardPreview"></div>
+          <div class="pub-list pub-list-rest" id="awardRest" hidden></div>
+          <button type="button" class="show-more-btn" id="awardToggle" aria-expanded="false"></button>
+        </div>
+
+        <div class="subsection-block" id="anchor-scholarships">
+          <h3 class="subsection-heading">採択・奨学金</h3>
+          <div class="pub-list" id="scholarshipPreview"></div>
+          <div class="pub-list pub-list-rest" id="scholarshipRest" hidden></div>
+          <button type="button" class="show-more-btn" id="scholarshipToggle" aria-expanded="false"></button>
+        </div>
       </details>
     </div>
   </section>

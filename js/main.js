@@ -83,7 +83,7 @@ function typeIcon(type) {
 function awardTypeIcon(type) {
   if (!type) return '';
   if (type.includes('学会賞')) return '🏆 ';
-  if (type.includes('奨学金')) return '🎓 ';
+  if (type.includes('採択') || type.includes('奨学金')) return '🎓 ';
   if (type.includes('表彰')) return '🎖️ ';
   return '';
 }
@@ -164,10 +164,10 @@ function renderPresentations(items) {
   wireShowMore('presentationToggle', restWrap, rest.length);
 }
 
-// 受賞・奨学金：最新1件を先に表示し、残りは「すべて見る」の裏に格納
-function renderAwards(items) {
-  const previewWrap = document.getElementById('awardPreview');
-  const restWrap = document.getElementById('awardRest');
+// 受賞・表彰／採択・奨学金：最新1件を先に表示し、残りは「すべて見る」の裏に格納
+function renderAwards(items, previewId, restId, toggleId) {
+  const previewWrap = document.getElementById(previewId);
+  const restWrap = document.getElementById(restId);
   if (!previewWrap) return;
 
   const PREVIEW_N = 1;
@@ -177,7 +177,7 @@ function renderAwards(items) {
   previewWrap.innerHTML = preview.map(awardItemHTML).join('');
   if (rest.length && restWrap) restWrap.innerHTML = rest.map(awardItemHTML).join('');
 
-  wireShowMore('awardToggle', restWrap, rest.length);
+  wireShowMore(toggleId, restWrap, rest.length);
 }
 
 // Awards（descのみ、venueなし）
@@ -265,7 +265,8 @@ function initReveal() {
 document.addEventListener('DOMContentLoaded', () => {
   renderList('paperList', PORTFOLIO_DATA.papers);
   renderPresentations(PORTFOLIO_DATA.presentations);
-  renderAwards(PORTFOLIO_DATA.awards);
+  renderAwards(PORTFOLIO_DATA.awards, 'awardPreview', 'awardRest', 'awardToggle');
+  renderAwards(PORTFOLIO_DATA.scholarships, 'scholarshipPreview', 'scholarshipRest', 'scholarshipToggle');
 
   // Licenses
   const licenseWrap = document.getElementById('licenseList');
