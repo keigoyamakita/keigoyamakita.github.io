@@ -32,7 +32,7 @@ const PORTFOLIO_DATA = {
       type: 'ポスター',
       title: 'Chronic genomic stress induces elevated A-to-I RNA editing in transcripts associated with auxiliary DNA repair pathways',
       authors: 'Sujin SONG、<span class="me">Keigo YAMAKITA</span>、他5名',
-      venue: '第27回日本RNA学会年会',
+      venue: '第27回日本RNA学会年会（兵庫）',
       tags: ['RNA editing', 'DNA repair'],
     },
     {
@@ -72,7 +72,7 @@ const PORTFOLIO_DATA = {
       type: '口頭',
       title: 'クロマチン構造を指標とした高次ゲノム不安定性評価法の確立',
       authors: '<span class="me">山北 啓吾</span>',
-      venue: '変異機構研究会',
+      venue: '変異機構研究会 第36回「夏の学校」（東京）',
       tags: [],
     },
     {
@@ -96,7 +96,7 @@ const PORTFOLIO_DATA = {
       type: 'ポスター',
       title: '化学物質に起因するエピジェネティック作用の双方向評価レポーター試験法の確立',
       authors: '山田 治人、<span class="me">山北 啓吾</span>、他6名',
-      venue: '第47回日本分子生物学会年会',
+      venue: '第47回日本分子生物学会年会（福岡）',
       tags: [],
     },
     {
@@ -112,7 +112,7 @@ const PORTFOLIO_DATA = {
       type: 'ポスター · 口頭',
       title: 'DNA鎖切断に起因するインターフェロン応答における核酸センサー cGAS, IFI16の役割の探索',
       authors: '寺越 菜央、<span class="me">山北 啓吾</span>、他6名',
-      venue: '第31回日本免疫毒性学会学術年会',
+      venue: '第31回日本免疫毒性学会学術年会（兵庫）',
       tags: [],
     },
     {
@@ -120,7 +120,7 @@ const PORTFOLIO_DATA = {
       type: 'ポスター',
       title: 'DNA修復の機能不全によるDNA鎖切断を伴わない自然免疫応答メカニズムの解明',
       authors: '田中 陽菜、<span class="me">山北 啓吾</span>、他8名',
-      venue: '第31回日本免疫毒性学会学術年会',
+      venue: '第31回日本免疫毒性学会学術年会（兵庫）',
       tags: [],
     },
   ],
@@ -133,7 +133,7 @@ const PORTFOLIO_DATA = {
       year: '2025',
       type: '学会賞',
       title: 'ベストプレゼンテーション賞',
-      org: '日本環境変異原ゲノム学会 第54回大会',
+      org: '日本環境変異原ゲノム学会第54回大会（静岡）',
       desc: '',
       link: 'https://uralab.wordpress.com/2025/11/26/1-12/',
     },
