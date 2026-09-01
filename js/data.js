@@ -62,7 +62,7 @@ const PORTFOLIO_DATA = {
       authors: '<span class="me">山北 啓吾</span>、他7名',
       venue: '日本環境変異原ゲノム学会第54回大会（静岡）',
       tags: ['ATAC-seq', 'クロマチン'],
-      link: 'https://uralab.wordpress.com/conferences/',
+      link: 'https://uralab.wordpress.com/2025/11/26/1-12/',
     },
     {
       year: '2025年11月22日',
