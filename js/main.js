@@ -30,7 +30,10 @@ navLinks.querySelectorAll('a').forEach(a =>
 );
 
 // Smooth scroll
+// ドロップダウン内のリンク（掲載論文・学会発表）は専用ハンドラ（openAndScroll）で処理するため、
+// ここでは対象から除外する。両方が同じ要素に付くと、二重にスクロールが走って動作が不安定になる。
 document.querySelectorAll('a[href^="#"]').forEach(a => {
+  if (a.closest('.nav-dropdown')) return;
   a.addEventListener('click', e => {
     const target = document.querySelector(a.getAttribute('href'));
     if (!target) return;

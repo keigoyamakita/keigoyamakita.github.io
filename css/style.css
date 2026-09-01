@@ -207,6 +207,18 @@ ul { list-style: none; }
 /* ドロップダウン */
 .nav-item-dropdown { position: relative; }
 
+/* トリガーとパネルの間の見た目の余白（12px）はホバー判定上は「隙間」になってしまい、
+   マウスを斜めに動かすとホバーが途切れてメニューが閉じてしまう。
+   透明な橋渡し要素でその隙間もホバー範囲に含める。 */
+.nav-item-dropdown::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  height: 12px;
+}
+
 .nav-caret {
   font-size: 0.65rem;
   opacity: 0.6;
