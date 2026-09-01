@@ -20,12 +20,22 @@ const PORTFOLIO_DATA = {
   // ===========================
   presentations: [
     {
+      year: '2026年8月',
+      type: '口頭',
+      title: 'ATAC-seqを用いたクロマチン構造を基準とした非遺伝毒性影響評価法の確立',
+      authors: '<span class="me">山北 啓吾</span>',
+      venue: '変異機構研究会 第37回「夏の学校」（大阪）',
+      tags: [],
+      link: 'https://uralab.wordpress.com/conferences/',
+    },
+    {
       year: '2026年7月1日',
       type: 'ポスター · 口頭',
       title: 'Establishment of a chromatin structure-based method for evaluating non-genotoxic genome instability using ATAC-seq',
       authors: '<span class="me">Keigo YAMAKITA</span>、他7名',
       venue: '第53回日本毒性学会学術年会（大阪）',
       tags: ['ATAC-seq', 'クロマチン', '非遺伝毒性'],
+      link: 'https://uralab.wordpress.com/conferences/',
     },
     {
       year: '2026年7月8日',
@@ -34,6 +44,7 @@ const PORTFOLIO_DATA = {
       authors: 'Sujin SONG、<span class="me">Keigo YAMAKITA</span>、他5名',
       venue: '第27回日本RNA学会年会（兵庫）',
       tags: ['RNA editing', 'DNA repair'],
+      link: 'https://uralab.wordpress.com/conferences/',
     },
     {
       year: '2026年6月25日',
@@ -42,6 +53,7 @@ const PORTFOLIO_DATA = {
       authors: '<span class="me">山北 啓吾</span>、他7名',
       venue: '第19回日本エピジェネティクス研究会年会（千葉）',
       tags: ['ATAC-seq', 'クロマチン', 'エピゲノム'],
+      link: 'https://uralab.wordpress.com/conferences/',
     },
     {
       year: '2025年11月22日',
@@ -50,6 +62,7 @@ const PORTFOLIO_DATA = {
       authors: '<span class="me">山北 啓吾</span>、他7名',
       venue: '日本環境変異原ゲノム学会第54回大会（静岡）',
       tags: ['ATAC-seq', 'クロマチン'],
+      link: 'https://uralab.wordpress.com/conferences/',
     },
     {
       year: '2025年11月22日',
@@ -58,6 +71,7 @@ const PORTFOLIO_DATA = {
       authors: 'SONG SUJIN、<span class="me">Keigo YAMAKITA</span>、他5名',
       venue: '日本環境変異原ゲノム学会第54回大会（静岡）',
       tags: [],
+      link: 'https://uralab.wordpress.com/conferences/',
     },
     {
       year: '2025年11月22日',
@@ -66,6 +80,7 @@ const PORTFOLIO_DATA = {
       authors: '田中 陽菜、<span class="me">山北 啓吾</span>、他8名',
       venue: '日本環境変異原ゲノム学会第54回大会（静岡）',
       tags: [],
+      link: 'https://uralab.wordpress.com/conferences/',
     },
     {
       year: '2025年7月',
@@ -74,6 +89,7 @@ const PORTFOLIO_DATA = {
       authors: '<span class="me">山北 啓吾</span>',
       venue: '変異機構研究会 第36回「夏の学校」（東京）',
       tags: [],
+      link: 'https://uralab.wordpress.com/conferences/',
     },
     {
       year: '2025年7月15日',
@@ -82,6 +98,7 @@ const PORTFOLIO_DATA = {
       authors: 'SONG SUJIN, <span class="me">Keigo YAMAKITA</span>、他5名',
       venue: 'Summer School on Genome Stability 2025, Montpellier',
       tags: ['国際', '英語'],
+      link: 'https://uralab.wordpress.com/conferences/',
     },
     {
       year: '2024年12月7日',
@@ -90,6 +107,7 @@ const PORTFOLIO_DATA = {
       authors: '<span class="me">山北 啓吾</span>、他7名',
       venue: '日本環境変異原ゲノム学会第53回大会（岡山）',
       tags: ['ATAC-seq'],
+      link: 'https://uralab.wordpress.com/conferences/',
     },
     {
       year: '2024年11月27日',
@@ -98,6 +116,7 @@ const PORTFOLIO_DATA = {
       authors: '山田 治人、<span class="me">山北 啓吾</span>、他6名',
       venue: '第47回日本分子生物学会年会（福岡）',
       tags: [],
+      link: 'https://uralab.wordpress.com/conferences/',
     },
     {
       year: '2024年9月16日',
@@ -106,6 +125,7 @@ const PORTFOLIO_DATA = {
       authors: 'Kazuma Nakatani, Nao Terakoshi, <span class="me">Keigo YAMAKITA</span>、他10名',
       venue: 'Gutenberg Workshop RNase H 2024',
       tags: ['国際', '英語'],
+      link: 'https://uralab.wordpress.com/conferences/',
     },
     {
       year: '2024年9月19日',
@@ -114,6 +134,7 @@ const PORTFOLIO_DATA = {
       authors: '寺越 菜央、<span class="me">山北 啓吾</span>、他6名',
       venue: '第31回日本免疫毒性学会学術年会（兵庫）',
       tags: [],
+      link: 'https://uralab.wordpress.com/conferences/',
     },
     {
       year: '2024年9月19日',
@@ -122,6 +143,7 @@ const PORTFOLIO_DATA = {
       authors: '田中 陽菜、<span class="me">山北 啓吾</span>、他8名',
       venue: '第31回日本免疫毒性学会学術年会（兵庫）',
       tags: [],
+      link: 'https://uralab.wordpress.com/conferences/',
     },
   ],
 

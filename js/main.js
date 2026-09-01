@@ -89,28 +89,33 @@ function awardTypeIcon(type) {
 }
 
 // 共通：pub-itemを生成
-function pubItemHTML(p) {
+// opts.wrapAsLink: true の場合、p.link をカード全体のリンク先にする（学会発表など）
+// false（既定）の場合、papers のように末尾に「論文を見る →」の個別リンクを表示する
+function pubItemHTML(p, opts = {}) {
   const tags = p.tags && p.tags.length
     ? `<div class="pub-tags">${p.tags.map(t => `<span class="tag">${t}</span>`).join('')}</div>`
     : '';
-  const link = p.link
+  const link = (!opts.wrapAsLink && p.link)
     ? `<a class="pub-link" href="${p.link}" target="_blank" rel="noopener">論文を見る →</a>`
     : '';
   const desc = p.desc
     ? `<div class="pub-desc">${p.desc}</div>`
     : '';
-  return `
-    <div class="pub-item reveal">
+  const inner = `
       <div class="pub-year">${p.year} · ${typeIcon(p.type)}${p.type}</div>
       <div class="pub-title">${p.title}</div>
       <div class="pub-venue"><span style="color:var(--text)">${p.authors}</span> · <span class="pub-venue-name">${p.venue}</span></div>
-      ${desc}${tags}${link}
-    </div>`;
+      ${desc}${tags}${link}`;
+
+  if (opts.wrapAsLink && p.link) {
+    return `<a class="pub-item pub-item-link reveal" href="${p.link}" target="_blank" rel="noopener">${inner}</a>`;
+  }
+  return `<div class="pub-item reveal">${inner}</div>`;
 }
 
 function renderList(id, items) {
   const wrap = document.getElementById(id);
-  if (wrap) wrap.innerHTML = items.map(pubItemHTML).join('');
+  if (wrap) wrap.innerHTML = items.map(p => pubItemHTML(p)).join('');
 }
 
 // 「すべて見る」トグルの共通配線。プレビューの下に隠れているrestWrapの表示/非表示を切り替える。
@@ -145,7 +150,7 @@ function renderPresentations(items) {
   const preview = items.slice(0, PREVIEW_N);
   const rest = items.slice(PREVIEW_N);
 
-  previewWrap.innerHTML = preview.map(pubItemHTML).join('');
+  previewWrap.innerHTML = preview.map(p => pubItemHTML(p, { wrapAsLink: true })).join('');
 
   if (rest.length && restWrap) {
     const groups = new Map();
@@ -157,7 +162,7 @@ function renderPresentations(items) {
     restWrap.innerHTML = [...groups.entries()].map(([year, list]) => `
       <details class="collapsible year-group">
         <summary class="subsection-title">${year}年（${list.length}件）</summary>
-        <div class="pub-list">${list.map(pubItemHTML).join('')}</div>
+        <div class="pub-list">${list.map(p => pubItemHTML(p, { wrapAsLink: true })).join('')}</div>
       </details>`).join('');
   }
 
