@@ -42,12 +42,15 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
   });
 });
 
-// ドロップダウン：原著論文・学会発表クリック時にスクロール（研究セクションは常時展開済み）
-function openAndScroll(anchorId) {
-  const sectionDetails = document.querySelector('#research .section-collapsible');
+// ドロップダウン：サブ項目クリック時に該当セクションを開いてスクロール
+// sectionId: 親セクションのid（例: 'research', 'awards'）
+// anchorId: スクロール先のサブセクションのid
+// autoExpandToggleId: 指定があれば、そのIDの「すべて見る」トグルを自動で開く
+function openAndScroll(sectionId, anchorId, autoExpandToggleId) {
+  const sectionDetails = document.querySelector(`#${sectionId} .section-collapsible`);
   if (sectionDetails) sectionDetails.open = true;
-  if (anchorId === 'anchor-presentations') {
-    const toggle = document.getElementById('presentationToggle');
+  if (autoExpandToggleId) {
+    const toggle = document.getElementById(autoExpandToggleId);
     if (toggle && toggle.getAttribute('aria-expanded') !== 'true' && toggle.style.display !== 'none') {
       toggle.click();
     }
@@ -66,8 +69,10 @@ document.addEventListener('DOMContentLoaded', () => {
     a.addEventListener('click', e => {
       e.preventDefault();
       const text = a.textContent.trim();
-      if (text === '掲載論文（共著含む）')  openAndScroll('anchor-papers');
-      if (text === '学会発表（共著含む）')  openAndScroll('anchor-presentations');
+      if (text === '掲載論文（共著含む）')  openAndScroll('research', 'anchor-papers');
+      if (text === '学会発表（共著含む）')  openAndScroll('research', 'anchor-presentations', 'presentationToggle');
+      if (text === '受賞・表彰')            openAndScroll('awards', 'anchor-awards');
+      if (text === '採択・奨学金')          openAndScroll('awards', 'anchor-scholarships');
     });
   });
 });
