@@ -995,12 +995,15 @@ ul { list-style: none; }
 
 .search-foot {
   display: flex;
-  gap: 1rem;
+  flex-wrap: wrap;
+  gap: 0.15rem 1rem;
   padding: 0.5rem 1rem;
   border-top: 1px solid var(--border);
   font-size: 0.72rem;
   color: var(--text2);
 }
+
+.search-foot span { white-space: nowrap; }
 
 /* 検索結果へ移動したときに、該当カードを一時的に強調する */
 .search-hit { outline: 2px solid var(--accent); outline-offset: 4px; border-radius: 10px; }
