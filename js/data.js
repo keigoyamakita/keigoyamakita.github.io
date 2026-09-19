@@ -25,7 +25,7 @@ const PORTFOLIO_DATA = {
       title: 'ATAC-seqを用いたクロマチン構造を基準とした非遺伝毒性影響評価法の確立',
       authors: '<span class="me">山北 啓吾</span>',
       venue: '変異機構研究会 第37回「夏の学校」（大阪）',
-      tags: [],
+      tags: ['ATAC-seq', '非遺伝毒性', '化学物質'],
       link: 'https://uralab.wordpress.com/conferences/',
     },
     {
@@ -34,7 +34,7 @@ const PORTFOLIO_DATA = {
       title: 'Establishment of a chromatin structure-based method for evaluating non-genotoxic genome instability using ATAC-seq',
       authors: '<span class="me">Keigo YAMAKITA</span>、他7名',
       venue: '第53回日本毒性学会学術年会（大阪）',
-      tags: ['ATAC-seq', 'クロマチン', '非遺伝毒性'],
+      tags: ['ATAC-seq', 'クロマチン構造', '非遺伝毒性'],
       link: 'https://uralab.wordpress.com/conferences/',
     },
     {
@@ -97,7 +97,7 @@ const PORTFOLIO_DATA = {
       title: 'Identification of the Novel Crosstalk Between DNA Damage Response and RNA Modifications',
       authors: 'SONG SUJIN, <span class="me">Keigo YAMAKITA</span>、他5名',
       venue: 'Summer School on Genome Stability 2025, Montpellier',
-      tags: ['国際', '英語'],
+      tags: ['RNA editing', 'DNA repair'],
       link: 'https://uralab.wordpress.com/conferences/',
     },
     {
