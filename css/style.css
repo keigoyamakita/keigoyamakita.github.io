@@ -859,3 +859,169 @@ ul { list-style: none; }
   }
   * { transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; }
 }
+
+/* ===========================
+   Site search（サイト内検索）
+   虫眼鏡をクリックすると、ナビ右上に入力欄が現れ、結果は直下のパネルに表示する
+=========================== */
+/* 検索ボタンを右端に置くため、リンク群を右寄せにする */
+.nav-links { margin-left: auto; }
+.nav-actions { display: flex; align-items: center; gap: 0.25rem; margin-left: 1rem; }
+
+.nav-search-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border: none;
+  border-radius: 8px;
+  background: none;
+  color: var(--text2);
+  cursor: pointer;
+  transition: color 0.2s, background 0.2s;
+}
+.nav-search-btn:hover { color: var(--accent); background: rgba(255,255,255,0.06); }
+.nav-search-btn:focus-visible,
+.nav-toggle:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+/* 入力欄・結果パネルはナビ（position: fixed）を基準に配置する */
+.search-field {
+  display: none;
+  position: absolute;
+  top: 12px;
+  right: 2rem;
+  z-index: 120;
+  width: min(380px, calc(100% - 4rem));
+  height: 36px;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0 0.3rem 0 0.75rem;
+  background: var(--bg2);
+  border: 1px solid var(--accent);
+  border-radius: 8px;
+  color: var(--text2);
+  animation: searchIn 0.18s ease-out;
+}
+.search-field > svg { flex-shrink: 0; }
+.nav.searching .search-field { display: flex; }
+/* 開いている間は虫眼鏡ボタンと（PCでは）ナビのリンクを隠し、入力欄に場所を譲る */
+.nav.searching .nav-search-btn { visibility: hidden; }
+.nav.searching .nav-links { visibility: hidden; }
+
+.search-input {
+  flex: 1;
+  min-width: 0;
+  background: none;
+  border: none;
+  outline: none;
+  color: var(--text);
+  font: inherit;
+  font-size: 0.92rem;
+}
+.search-input::placeholder { color: var(--text2); opacity: 0.7; }
+.search-close {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  height: 26px;
+  border: none;
+  border-radius: 6px;
+  background: none;
+  color: var(--text2);
+  cursor: pointer;
+  transition: color 0.2s, background 0.2s;
+}
+.search-close:hover { color: var(--text); background: rgba(255,255,255,0.08); }
+.search-close:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
+
+.search-panel {
+  display: none;
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 2rem;
+  z-index: 120;
+  width: min(460px, calc(100% - 4rem));
+  max-height: calc(100vh - 84px);
+  flex-direction: column;
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  box-shadow: 0 16px 48px rgba(0,0,0,0.55);
+  overflow: hidden;
+  animation: searchIn 0.18s ease-out;
+}
+.nav.searching .search-panel:not([hidden]) { display: flex; }
+
+@keyframes searchIn {
+  from { opacity: 0; transform: translateY(-4px); }
+  to   { opacity: 1; transform: none; }
+}
+
+.search-status { padding: 0.6rem 1rem 0.4rem; font-size: 0.78rem; color: var(--text2); line-height: 1.5; }
+
+.search-results {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  min-height: 0;
+  overflow-y: auto;
+  padding: 0 0.5rem 0.5rem;
+}
+.search-results:empty { display: none; }
+
+.search-result {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  width: 100%;
+  padding: 0.65rem 0.75rem;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  background: none;
+  color: var(--text);
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+.search-result:hover { background: rgba(255,255,255,0.05); border-color: var(--border); }
+.search-result:focus-visible { outline: none; background: rgba(255,255,255,0.06); border-color: var(--accent); }
+.search-result-label { font-size: 0.72rem; font-family: var(--font-mono); font-weight: 600; color: var(--accent2); letter-spacing: 0.02em; }
+.search-result-title { font-size: 0.9rem; font-weight: 700; line-height: 1.5; }
+.search-result-snippet { font-size: 0.8rem; color: var(--text2); line-height: 1.65; }
+.search-panel mark { background: rgba(88,166,255,0.25); color: var(--accent); border-radius: 3px; padding: 0 1px; }
+
+.search-foot {
+  display: flex;
+  gap: 1rem;
+  padding: 0.5rem 1rem;
+  border-top: 1px solid var(--border);
+  font-size: 0.72rem;
+  color: var(--text2);
+}
+
+/* 検索結果へ移動したときに、該当カードを一時的に強調する */
+.search-hit { outline: 2px solid var(--accent); outline-offset: 4px; border-radius: 10px; }
+
+@media (max-width: 640px) {
+  /* スマホでは入力欄がナビ全体（ロゴ・ハンバーガー）を覆う */
+  .search-field { left: 0.75rem; right: 0.75rem; width: auto; }
+  .search-input { font-size: 16px; } /* iOSで入力時に画面が拡大されるのを防ぐ */
+  .search-panel { left: 0.75rem; right: 0.75rem; width: auto; }
+  .search-foot { display: none; }
+}
+
+/* ===========================
+   画像の保存抑止
+   ※ 表示される画像は技術的に完全には守れない（開発者ツール・スクリーンショット等）。
+     右クリック保存・ドラッグ・長押し保存といった「手軽な持ち出し」を防ぐ抑止策。
+=========================== */
+img {
+  -webkit-user-drag: none;
+  -webkit-touch-callout: none; /* iOSの長押しメニュー（画像を保存）を出さない */
+  user-select: none;
+}
+/* 画像そのものにはクリック等を届かせず、親要素が受ける（右クリック保存の対象になりにくくする） */
+.avatar img { pointer-events: none; }

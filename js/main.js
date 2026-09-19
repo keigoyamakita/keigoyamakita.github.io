@@ -299,3 +299,12 @@ document.addEventListener('DOMContentLoaded', () => {
   document.querySelectorAll('.info-card').forEach(el => el.classList.add('reveal'));
   initReveal();
 });
+
+// 画像の保存抑止（右クリック保存・ドラッグ保存を無効化）
+// 表示される画像は技術的に完全には守れないため、手軽な持ち出しを防ぐ抑止策として実装している。
+document.addEventListener('contextmenu', e => {
+  if (e.target.closest && e.target.closest('img, .avatar')) e.preventDefault();
+});
+document.addEventListener('dragstart', e => {
+  if (e.target.tagName === 'IMG') e.preventDefault();
+});

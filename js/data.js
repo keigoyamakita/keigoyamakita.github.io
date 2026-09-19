@@ -20,7 +20,7 @@ const PORTFOLIO_DATA = {
   // ===========================
   presentations: [
     {
-      year: '2026年8月',
+      year: '2026年7月30日',
       type: '口頭',
       title: 'ATAC-seqを用いたクロマチン構造を基準とした非遺伝毒性影響評価法の確立',
       authors: '<span class="me">山北 啓吾</span>',

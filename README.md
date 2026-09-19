@@ -18,6 +18,7 @@
 - コンテンツは `js/data.js` にデータとして分離し、`js/main.js` が動的にレンダリング
 - レスポンシブ対応、`prefers-reduced-motion` を考慮したアクセシビリティ対応
 - OGP / Twitter Card / JSON-LD（構造化データ）によるSEO対策
+- サイト内検索：表示済みのカードからインデックスを自動生成するため、`js/data.js` に追記した内容も検索対象になります（`Ctrl/⌘+F`・`/`・`Ctrl/⌘+K` でも起動。検索欄が開いている状態でもう一度 `Ctrl/⌘+F` を押すとブラウザ標準のページ内検索）
 
 ## ディレクトリ構成
 
@@ -28,9 +29,11 @@
 │   └── style.css     # スタイル
 ├── js/
 │   ├── data.js        # 論文・学会発表・受賞歴などのデータ
-│   └── main.js         # データのレンダリング・UIロジック
+│   ├── main.js         # データのレンダリング・UIロジック
+│   └── search.js       # サイト内検索（右上の虫眼鏡ボタン）
 └── images/
-    └── graduate_profile.jpeg
+    ├── profile-pixel.png      # プロフィール画像（ドット絵）
+    └── graduate_profile.jpeg  # 旧プロフィール画像
 ```
 
 ## セクション
