@@ -148,12 +148,31 @@ function wireShowMore(toggleId, restWrap, restCount) {
   });
 }
 
+// 日付文字列（例：'2026年7月30日' / '2025年7月' / '2025'）を並べ替え用の数値 YYYYMMDD に変換する。
+// 月・日が無い場合は 0 として扱う（同じ年・月の中では日付ありの項目より後ろに並ぶ）。
+// data.js 側に date: '2026-07-30' があればそちらを優先する。
+function dateKey(p) {
+  const src = p.date || p.year || '';
+  const m = String(src).match(/(\d{4})\D*(\d{1,2})?\D*(\d{1,2})?/);
+  if (!m) return 0;
+  return (+m[1]) * 10000 + (+(m[2] || 0)) * 100 + (+(m[3] || 0));
+}
+
+// 新しい順に並べ替える（同じ日付の項目は data.js の記述順を維持）
+function sortByDateDesc(items) {
+  return items
+    .map((p, i) => ({ p, i }))
+    .sort((a, b) => dateKey(b.p) - dateKey(a.p) || a.i - b.i)
+    .map(x => x.p);
+}
+
 // 学会発表：直近3件を先に表示し、残りは年ごとにグループ化して「すべて見る」の裏に格納
 function renderPresentations(items) {
   const previewWrap = document.getElementById('presentationPreview');
   const restWrap = document.getElementById('presentationRest');
   if (!previewWrap) return;
 
+  items = sortByDateDesc(items);
   const PREVIEW_N = 3;
   const preview = items.slice(0, PREVIEW_N);
   const rest = items.slice(PREVIEW_N);
@@ -249,15 +268,19 @@ function renderSkills() {
 function renderContact() {
   const wrap = document.getElementById('contactGrid');
   if (!wrap) return;
-  wrap.innerHTML = PORTFOLIO_DATA.contact.map(c => `
-    <a class="contact-item" href="${c.href}" target="_blank" rel="noopener">
+  wrap.innerHTML = PORTFOLIO_DATA.contact.map(c => {
+    // メールアドレスはソース上に完全な形で置かず、表示時に組み立てる（スパム収集対策）
+    const href = c.email ? 'mailto:' + c.email.join('@') : c.href;
+    return `
+    <a class="contact-item" href="${href}" target="_blank" rel="noopener">
       <div class="contact-icon">${c.icon}</div>
       <div class="contact-info">
         <strong>${c.label}</strong>
         <small>${c.sub}</small>
       </div>
     </a>
-  `).join('');
+  `;
+  }).join('');
 }
 
 // Scroll reveal
