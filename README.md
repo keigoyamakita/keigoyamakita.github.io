@@ -26,6 +26,7 @@
 ```
 .
 ├── index.html        # ページ本体
+├── 404.html          # 存在しないURL用のページ
 ├── css/
 │   └── style.css     # スタイル
 ├── js/
@@ -33,8 +34,7 @@
 │   ├── main.js         # データのレンダリング・UIロジック
 │   └── search.js       # サイト内検索（右上の虫眼鏡ボタン）
 └── images/
-    ├── profile-pixel.png      # プロフィール画像（ドット絵）
-    └── graduate_profile.jpeg  # 旧プロフィール画像
+    └── profile-pixel.png      # プロフィール画像（ドット絵）
 ```
 
 ## セクション
