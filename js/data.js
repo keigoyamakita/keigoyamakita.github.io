@@ -20,6 +20,15 @@ const PORTFOLIO_DATA = {
   // ===========================
   presentations: [
     {
+      year: '2026年10月2日',
+      type: 'ポスター',
+      title: 'クロマチン構造の変化に着目した化学物質の新たな影響評価指標の確立',
+      authors: '<span class="me">山北 啓吾</span>、他1名',
+      venue: '生命情報科学若手の会 第18回年会（神奈川）',
+      tags: ['ATAC-seq', 'クロマチン構造', '化学物質'],
+      link: 'https://www.bioinfowakate.org/activities/meetings/%E7%AC%AC18%E5%9B%9E-%E5%B9%B4%E4%BC%9A',
+    },
+    {
       year: '2026年7月30日',
       type: '口頭',
       title: 'ATAC-seqを用いたクロマチン構造を基準とした非遺伝毒性影響評価法の確立',
