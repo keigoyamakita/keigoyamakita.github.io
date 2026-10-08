@@ -227,6 +227,13 @@ const PORTFOLIO_DATA = {
   // 制作物（解析ツール・アプリ）
   // ===========================
   works: [
+    {
+      year: '2026',
+      title: 'BenchMate — 手袋のまま使えるラボタイマー（iOS / watchOS アプリ）',
+      desc: 'ウェットラボ作業向けのタイマー・計算機・チェックリストアプリ。複数タイマーの同時実行、実験ごとのタイマー登録、希釈・モル濃度・PCRマスターミックス計算に対応し、手袋をしたままApple Watchで残り時間を確認できます。App Storeにて無料公開中。',
+      tags: ['iOS', 'watchOS', 'Apple Watch', 'ウェットラボ'],
+      link: 'https://apps.apple.com/jp/app/benchmate/id6819570337',
+    },
   ],
 
   // ===========================
