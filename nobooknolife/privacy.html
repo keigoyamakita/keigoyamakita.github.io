@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>No Book No Life プライバシーポリシー</title>
+<style>
+  body { font-family: -apple-system, "Hiragino Sans", sans-serif; max-width: 720px; margin: 0 auto; padding: 24px 16px 64px; line-height: 1.8; color: #222; background: #fff; }
+  h1 { font-size: 1.5rem; }
+  h2 { font-size: 1.1rem; margin-top: 2em; border-bottom: 1px solid #ddd; padding-bottom: 4px; }
+  table { border-collapse: collapse; width: 100%; font-size: .95rem; }
+  th, td { border: 1px solid #ddd; padding: 8px; text-align: left; vertical-align: top; }
+  th { background: #f5f5f5; }
+  .meta { color: #666; font-size: .9rem; }
+  a { color: #0a66c2; }
+  @media (prefers-color-scheme: dark) {
+    body { background: #111; color: #eee; }
+    th { background: #222; }
+    th, td, h2 { border-color: #444; }
+    .meta { color: #aaa; }
+    a { color: #6cb4ff; }
+  }
+</style>
+</head>
+<body>
+<h1>No Book No Life プライバシーポリシー</h1>
+<p class="meta">最終更新日：2026年10月8日（開発中の暫定版。公開時に内容を確定します）<br>提供者：山北啓吾（個人）</p>
+
+<p>No Book No Life（以下「本アプリ」）は、読んだ本を記録し、次に読む本を提案する iPhone 向けアプリです。本ポリシーは、本アプリにおける情報の取り扱いを説明するものです。</p>
+
+<h2>1. 取得する情報と利用目的</h2>
+<table>
+  <tr><th>情報</th><th>取得方法</th><th>利用目的</th></tr>
+  <tr><td>本の情報（書名、著者、ISBN、書影のURL、内容紹介、ジャンル、レビュー平均）</td><td>利用者が本を検索・登録したときに書誌APIから取得</td><td>本棚の表示、関連本の提案</td></tr>
+  <tr><td>読書記録（読書状態、星評価、感想、「楽しかった点」タグ、読了日）</td><td>利用者の入力</td><td>本棚の管理、関連本の提案と提案理由の表示</td></tr>
+  <tr><td>提案結果と「興味なし」の操作履歴</td><td>アプリ内で生成・利用者の操作</td><td>提案からの除外と精度の改善</td></tr>
+</table>
+<p>氏名、メールアドレス、位置情報、写真、連絡先などの個人情報は取得しません。アカウント登録も不要です。</p>
+
+<h2>2. 情報の保存場所</h2>
+<p>上記の情報はすべて利用者の端末内にのみ保存されます。関連本の提案の計算も端末内で行います。提供者は利用者の読書記録を閲覧できません。</p>
+
+<h2>3. 書誌情報の検索で外部に送信される情報</h2>
+<p>本の検索と関連本の候補取得のため、次の情報を提供者の中継サーバーを経由して、楽天ブックス書籍検索API（楽天グループ株式会社）および Google Books API（Google LLC）に送信します。</p>
+<ul>
+  <li>利用者が入力した検索語（書名・著者名）</li>
+  <li>本のISBN、著者名、ジャンルID</li>
+  <li>関連本を探すためのキーワード（登録済みの本の内容紹介と感想から端末内で抽出した数語）</li>
+</ul>
+<p>感想の全文、星評価、読書記録の一覧は送信しません。中継サーバーはAPIキーを保護するためのもので、送信内容を保存しません。ただし、中継サーバーの運用基盤および各APIの提供元では、通信の過程でIPアドレス等が記録される場合があります。各提供元での取り扱いは、それぞれのプライバシーポリシーに従います。</p>
+
+<h2>4. 購入リンクについて</h2>
+<p>提案された本の画面から楽天ブックスの商品ページを開くことができます。このリンクには楽天アフィリエイトのリンクが含まれる場合があり、リンク先での閲覧や購入に関する情報は楽天グループ株式会社の方針に従って取り扱われます。利用者が何を購入したかが本アプリから提供者に通知されることはありません。</p>
+
+<h2>5. 第三者への提供</h2>
+<p>本アプリは、広告、分析ツール、その他の第三者SDKを使用しません。第3項に記載した書誌APIへの送信を除き、利用者の情報を第三者に提供しません。</p>
+
+<h2>6. データの削除</h2>
+<ul>
+  <li>本棚の本や読書記録は、アプリ内で個別に削除できます。</li>
+  <li>「興味なし」にした本は、設定画面から解除できます。</li>
+  <li>本アプリを削除すると、端末内のデータもすべて削除されます。</li>
+</ul>
+
+<h2>7. 本ポリシーの変更</h2>
+<p>iCloud同期やアプリ内課金の追加などにより情報の取り扱いが変わる場合は、本ページを更新し、アプリのアップデート内容でお知らせします。</p>
+
+<h2>8. お問い合わせ</h2>
+<p>山北啓吾<br>メール：k5ykrennraku@gmail.com</p>
+
+<p class="meta"><a href="index.html">No Book No Life について</a><br>
+<!-- Rakuten Web Services Attribution Snippet FROM HERE -->
+<a href="https://developers.rakuten.com/" target="_blank">Supported by Rakuten Developers</a>
+<!-- Rakuten Web Services Attribution Snippet TO HERE -->
+</p>
+</body>
+</html>
