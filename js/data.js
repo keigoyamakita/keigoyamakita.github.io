@@ -20,6 +20,15 @@ const PORTFOLIO_DATA = {
   // ===========================
   presentations: [
     {
+      year: '2026年10月12日',
+      type: 'ポスター · 口頭（英語）',
+      title: 'Establishment of a Chromatin Dynamics-Based Assessment Framework for Non-Genotoxic Carcinogens',
+      authors: '<span class="me">Keigo YAMAKITA</span>、他7名',
+      venue: '2026 EMGS Annual Meeting（オンライン）',
+      tags: ['ATAC-seq', '非遺伝毒性', '国際'],
+      link: 'https://emgs-us.org/page/2026_EMGS',
+    },
+    {
       year: '2026年10月2日',
       type: 'ポスター',
       title: 'クロマチン構造の変化に着目した化学物質の新たな影響評価指標の確立',
@@ -160,6 +169,14 @@ const PORTFOLIO_DATA = {
   // 受賞・表彰
   // ===========================
   awards: [
+    {
+      year: '2026年10月12日',
+      type: '学会賞',
+      title: 'Student and Early Career Investigator Best Abstract Award',
+      org: 'Environmental Mutagenesis and Genomics Society (EMGS) 2026 Annual Meeting（オンライン）',
+      desc: '',
+      link: 'https://emgs-us.org/page/2026_EMGS',
+    },
     {
       year: '2025',
       type: '学会賞',
