@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>アプリへのお問い合わせ｜山北啓吾</title>
+<meta name="description" content="山北啓吾が制作したアプリ（訪花ログ、BenchMate）への不具合報告・改善要望・質問の受付ページです。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #f4f7f4;
+    --surface: #ffffff;
+    --ink: #1d2a23;
+    --muted: #5d6c63;
+    --line: #c9d3cc;
+    --accent: #2b6a55;
+    --accent-ink: #ffffff;
+    --accent-soft: #e2eee8;
+    --error: #b3261e;
+    --focus: #1f5fbf;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --paper: #141a17;
+      --surface: #1c2420;
+      --ink: #e4ebe6;
+      --muted: #9aa9a0;
+      --line: #36433c;
+      --accent: #6fbf9f;
+      --accent-ink: #0f1a15;
+      --accent-soft: #233a30;
+      --error: #f2867d;
+      --focus: #8ab4f8;
+    }
+  }
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: "Zen Kaku Gothic New", "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Noto Sans JP", "Yu Gothic", sans-serif;
+    font-size: 16px;
+    line-height: 1.8;
+  }
+  a { color: var(--accent); }
+  .wrap { max-width: 640px; margin: 0 auto; padding: 24px 20px 72px; }
+  .site { font-size: 0.875rem; margin-bottom: 40px; }
+  .site a { color: var(--muted); text-decoration: none; }
+  .site a:hover { text-decoration: underline; }
+  h1 { font-size: 1.75rem; line-height: 1.4; font-weight: 700; margin: 0 0 12px; letter-spacing: 0.02em; }
+  .lead { color: var(--muted); margin: 0 0 36px; }
+
+  form { display: grid; gap: 28px; }
+  .field { display: grid; gap: 8px; }
+  .label { font-weight: 700; font-size: 1rem; }
+  .req { font-weight: 500; font-size: 0.8125rem; color: var(--accent); margin-left: 6px; }
+  .opt { font-weight: 400; font-size: 0.8125rem; color: var(--muted); margin-left: 6px; }
+  .hint { font-size: 0.8125rem; color: var(--muted); margin: 0; }
+
+  select, input[type="text"], input[type="email"], textarea {
+    width: 100%;
+    font: inherit;
+    color: var(--ink);
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    padding: 12px 14px;
+  }
+  select {
+    appearance: none;
+    -webkit-appearance: none;
+    background-image: linear-gradient(45deg, transparent 50%, var(--muted) 50%), linear-gradient(135deg, var(--muted) 50%, transparent 50%);
+    background-position: calc(100% - 20px) 50%, calc(100% - 14px) 50%;
+    background-size: 6px 6px, 6px 6px;
+    background-repeat: no-repeat;
+    padding-right: 40px;
+  }
+  textarea { min-height: 180px; resize: vertical; line-height: 1.7; }
+  select:focus-visible, input:focus-visible, textarea:focus-visible, button:focus-visible {
+    outline: 3px solid var(--focus);
+    outline-offset: 2px;
+  }
+  .counter { font-size: 0.8125rem; color: var(--muted); text-align: right; margin: 0; }
+
+  .kinds { display: flex; flex-wrap: wrap; gap: 8px; border: 0; padding: 0; margin: 0; }
+  .kinds legend { padding: 0; margin-bottom: 8px; }
+  .kind { position: relative; }
+  .kind input { position: absolute; opacity: 0; inset: 0; margin: 0; cursor: pointer; }
+  .kind span {
+    display: inline-block;
+    padding: 8px 18px;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    background: var(--surface);
+    cursor: pointer;
+    transition: background-color .15s, border-color .15s;
+  }
+  .kind input:checked + span { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); }
+  .kind input:focus-visible + span { outline: 3px solid var(--focus); outline-offset: 2px; }
+
+  .details { border-top: 1px solid var(--line); padding-top: 24px; display: grid; gap: 24px; }
+  .details-title { font-size: 0.875rem; color: var(--muted); margin: 0; }
+  .two { display: grid; gap: 24px; grid-template-columns: 1fr 1fr; }
+  @media (max-width: 560px) { .two { grid-template-columns: 1fr; } }
+
+  .hp { position: absolute; left: -10000px; width: 1px; height: 1px; overflow: hidden; }
+
+  .error { color: var(--error); font-size: 0.875rem; margin: 0; }
+  .field.invalid select, .field.invalid textarea, .field.invalid input { border-color: var(--error); }
+
+  .actions { display: grid; gap: 12px; }
+  button {
+    font: inherit;
+    font-weight: 700;
+    border: 0;
+    border-radius: 8px;
+    padding: 14px 24px;
+    background: var(--accent);
+    color: var(--accent-ink);
+    cursor: pointer;
+    justify-self: start;
+    min-width: 200px;
+  }
+  button[disabled] { opacity: .6; cursor: wait; }
+  .note { font-size: 0.8125rem; color: var(--muted); margin: 0; }
+  .form-error { background: var(--surface); border: 1px solid var(--error); border-radius: 8px; padding: 12px 14px; }
+
+  .done { background: var(--surface); border: 1px solid var(--line); border-left: 4px solid var(--accent); border-radius: 8px; padding: 24px; }
+  .done h2 { margin: 0 0 8px; font-size: 1.25rem; }
+  .done p { margin: 0 0 12px; }
+  .receipt { font-size: 1.125rem; font-weight: 700; letter-spacing: 0.04em; }
+  .done button { background: transparent; color: var(--accent); border: 1px solid var(--accent); }
+
+  footer { margin-top: 56px; font-size: 0.8125rem; color: var(--muted); }
+  [hidden] { display: none !important; }
+  @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="site"><a href="https://keigoyamakita.com/">山北啓吾</a></div>
+
+  <h1>アプリへのお問い合わせ</h1>
+  <p class="lead">不具合の報告、改善のご要望、使い方のご質問を受け付けています。いただいた内容は今後のアップデートの参考にします。</p>
+
+  <form id="contact-form" novalidate>
+    <div class="field" id="f-app">
+      <label class="label" for="app">対象のアプリ<span class="req">必須</span></label>
+      <select id="app" name="app" required>
+        <option value="">選択してください</option>
+        <option value="houkalog">訪花ログ</option>
+        <option value="benchmate">BenchMate</option>
+        <option value="other">その他・このサイトについて</option>
+      </select>
+      <p class="error" id="e-app" hidden>アプリを選択してください。</p>
+    </div>
+
+    <div class="field" id="f-category">
+      <fieldset class="kinds">
+        <legend class="label">内容の種類<span class="req">必須</span></legend>
+        <label class="kind"><input type="radio" name="category" value="bug"><span>不具合</span></label>
+        <label class="kind"><input type="radio" name="category" value="request"><span>改善要望</span></label>
+        <label class="kind"><input type="radio" name="category" value="question"><span>質問</span></label>
+        <label class="kind"><input type="radio" name="category" value="other"><span>その他</span></label>
+      </fieldset>
+      <p class="error" id="e-category" hidden>内容の種類を選択してください。</p>
+    </div>
+
+    <div class="field" id="f-message">
+      <label class="label" for="message">内容<span class="req">必須</span></label>
+      <p class="hint" id="message-hint">不具合の場合は、どの画面で何をしたときに起きたかを書いていただけると助かります。</p>
+      <textarea id="message" name="message" maxlength="4000" required aria-describedby="message-hint counter"></textarea>
+      <p class="counter" id="counter">0 / 4000</p>
+      <p class="error" id="e-message" hidden>内容を5文字以上入力してください。</p>
+    </div>
+
+    <div class="details">
+      <p class="details-title">分かる範囲で入力してください。</p>
+      <div class="two">
+        <div class="field">
+          <label class="label" for="device">端末とiOSのバージョン<span class="opt">任意</span></label>
+          <input type="text" id="device" name="device" maxlength="100" placeholder="例：iPhone 15、iOS 18.1" autocomplete="off">
+        </div>
+        <div class="field">
+          <label class="label" for="appVersion">アプリのバージョン<span class="opt">任意</span></label>
+          <input type="text" id="appVersion" name="appVersion" maxlength="30" placeholder="例：1.0" autocomplete="off">
+        </div>
+      </div>
+      <div class="field" id="f-email">
+        <label class="label" for="email">返信先のメールアドレス<span class="opt">任意</span></label>
+        <input type="email" id="email" name="email" maxlength="254" autocomplete="email" inputmode="email">
+        <p class="hint">返信が必要な場合のみ入力してください。</p>
+        <p class="error" id="e-email" hidden>メールアドレスの形式を確認してください。</p>
+      </div>
+    </div>
+
+    <div class="hp" aria-hidden="true">
+      <label for="website">このフィールドは空のままにしてください</label>
+      <input type="text" id="website" name="website" tabindex="-1" autocomplete="off">
+    </div>
+
+    <div class="actions">
+      <p class="error form-error" id="e-form" role="alert" hidden></p>
+      <button type="submit" id="submit">送信する</button>
+      <p class="note">入力内容は、お問い合わせへの対応とアプリの改善のためにのみ使います。送信内容は Google スプレッドシートに保存されます。お子さまの氏名など、個人を特定できる情報は書かないでください。</p>
+    </div>
+  </form>
+
+  <section class="done" id="done" hidden tabindex="-1" aria-live="polite">
+    <h2>送信しました</h2>
+    <p>お問い合わせを受け付けました。メールアドレスを入力された場合は、必要に応じて返信します。</p>
+    <p>受付番号 <span class="receipt" id="receipt"></span></p>
+    <button type="button" id="again">別の内容を送る</button>
+  </section>
+
+  <footer>
+    <a href="https://keigoyamakita.com/houkalog/privacy.html">訪花ログ プライバシーポリシー</a>
+  </footer>
+</div>
+
+<script>
+(function () {
+  // Apps Script を「ウェブアプリ」としてデプロイしたときに表示される URL（/exec で終わるもの）を貼り付けます。
+  var ENDPOINT = "https://script.google.com/macros/s/AKfycbxDmF9GWsyaB5dkdm1oNFGTXvzwEJJLhAj7IKDOUZg7I3MwrXPKZrlyex0dse9Ix9X5/exec";
+
+  var form = document.getElementById("contact-form");
+  var done = document.getElementById("done");
+  var submitBtn = document.getElementById("submit");
+  var message = document.getElementById("message");
+  var counter = document.getElementById("counter");
+  var formError = document.getElementById("e-form");
+
+  // ?app=houkalog のようにURLで指定されたアプリを選択済みにする（App Store のサポートURL用）
+  var params = new URLSearchParams(location.search);
+  var preset = params.get("app");
+  var appSelect = document.getElementById("app");
+  if (preset && appSelect.querySelector('option[value="' + preset.replace(/[^a-z0-9_-]/gi, "") + '"]')) {
+    appSelect.value = preset;
+  }
+
+  message.addEventListener("input", function () {
+    counter.textContent = message.value.length + " / 4000";
+  });
+
+  function setError(fieldId, errorId, show) {
+    var el = document.getElementById(errorId);
+    el.hidden = !show;
+    var field = document.getElementById(fieldId);
+    if (field) field.classList.toggle("invalid", show);
+  }
+
+  function validate() {
+    var ok = true;
+    var app = appSelect.value;
+    var cat = form.querySelector('input[name="category"]:checked');
+    var msg = message.value.trim();
+    var email = document.getElementById("email").value.trim();
+
+    setError("f-app", "e-app", !app); if (!app) ok = false;
+    setError("f-category", "e-category", !cat); if (!cat) ok = false;
+    setError("f-message", "e-message", msg.length < 5); if (msg.length < 5) ok = false;
+    var badEmail = email !== "" && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+    setError("f-email", "e-email", badEmail); if (badEmail) ok = false;
+
+    if (!ok) {
+      var first = form.querySelector(".invalid select, .invalid textarea, .invalid input, .invalid input[type=radio]");
+      if (first) first.focus();
+    }
+    return ok;
+  }
+
+  form.addEventListener("submit", function (ev) {
+    ev.preventDefault();
+    formError.hidden = true;
+    if (!validate()) return;
+
+    if (ENDPOINT.indexOf("https://script.google.com/") !== 0) {
+      formError.textContent = "送信先が設定されていません。ページ管理者に連絡してください。";
+      formError.hidden = false;
+      return;
+    }
+
+    var payload = {
+      app: appSelect.value,
+      category: form.querySelector('input[name="category"]:checked').value,
+      message: message.value.trim(),
+      device: document.getElementById("device").value.trim(),
+      appVersion: document.getElementById("appVersion").value.trim(),
+      email: document.getElementById("email").value.trim(),
+      website: document.getElementById("website").value,
+      page: location.pathname
+    };
+
+    submitBtn.disabled = true;
+    submitBtn.textContent = "送信しています…";
+
+    // Content-Type を text/plain にしてプリフライトを避ける
+    fetch(ENDPOINT, {
+      method: "POST",
+      headers: { "Content-Type": "text/plain;charset=utf-8" },
+      body: JSON.stringify(payload)
+    })
+      .then(function (res) { return res.json(); })
+      .then(function (data) {
+        if (!data || !data.ok) throw new Error((data && data.error) || "unknown");
+        document.getElementById("receipt").textContent = data.id || "";
+        form.hidden = true;
+        done.hidden = false;
+        done.focus();
+        window.scrollTo({ top: 0 });
+      })
+      .catch(function (err) {
+        var msg = String(err && err.message || "");
+        if (msg === "rate_limited") {
+          formError.textContent = "送信が集中しています。数分おいてから、もう一度送信してください。";
+        } else if (msg === "invalid") {
+          formError.textContent = "入力内容を確認してから、もう一度送信してください。";
+        } else {
+          formError.textContent = "送信できませんでした。通信状態を確認して、もう一度送信してください。解決しない場合は k5ykrennraku@gmail.com までメールでお知らせください。";
+        }
+        formError.hidden = false;
+      })
+      .finally(function () {
+        submitBtn.disabled = false;
+        submitBtn.textContent = "送信する";
+      });
+  });
+
+  document.getElementById("again").addEventListener("click", function () {
+    var keepApp = appSelect.value;
+    form.reset();
+    appSelect.value = keepApp;
+    counter.textContent = "0 / 4000";
+    done.hidden = true;
+    form.hidden = false;
+    appSelect.focus();
+  });
+})();
+</script>
+</body>
+</html>
