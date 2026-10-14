@@ -640,6 +640,24 @@ ul { list-style: none; }
   color: var(--text);
 }
 
+/* 制作物：紹介ページ・関連リンク */
+.work-title-link { color: inherit; }
+.work-title-link:hover { color: var(--accent); }
+.work-links { display: flex; flex-wrap: wrap; gap: 0.5rem 1rem; margin-top: 0.8rem; font-size: 0.82rem; }
+.work-link { color: var(--accent); }
+.work-link:hover { text-decoration: underline; }
+.work-link-main { font-weight: 700; }
+
+/* 研究テーマ解説ページへの導線 */
+.research-more { margin-top: 1.2rem; font-size: 0.9rem; }
+.research-more a { color: var(--accent); font-weight: 600; }
+.research-more a:hover { text-decoration: underline; }
+
+/* フッターのサイト内リンク（静的リンク：クロール経路） */
+.footer-nav { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.5rem 1.2rem; margin-bottom: 0.8rem; }
+.footer-nav a { color: var(--text2); }
+.footer-nav a:hover { color: var(--text); }
+
 /* 著者一覧の中で自分の名前を強調する */
 .me {
   color: var(--accent);

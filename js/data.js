@@ -249,7 +249,36 @@ const PORTFOLIO_DATA = {
       title: 'BenchMate — 手袋のまま使えるラボタイマー（iOS / watchOS アプリ）',
       desc: 'ウェットラボ作業向けのタイマー・計算機・チェックリストアプリ。複数タイマーの同時実行、実験ごとのタイマー登録、希釈・モル濃度・PCRマスターミックス計算に対応し、手袋をしたままApple Watchで残り時間を確認できます。App Storeにて無料公開中。',
       tags: ['iOS', 'watchOS', 'Apple Watch', 'ウェットラボ'],
-      link: 'https://apps.apple.com/jp/app/benchmate/id6819570337',
+      page: '/benchmate/',
+      links: [
+        { label: 'App Store', href: 'https://apps.apple.com/jp/app/benchmate/id6819570337', external: true },
+        { label: 'プライバシーポリシー', href: '/benchmate/privacy.html' },
+        { label: 'お問い合わせ', href: '/contact/?app=benchmate' },
+      ],
+    },
+    {
+      year: '2026',
+      title: '訪花ログ — 花と昆虫の観察記録アプリ（iOS アプリ）',
+      desc: '花を訪れる昆虫の観察を記録するアプリ。写真・場所・日時・花や虫の名前・行動を記録し、端末内の画像認識で昆虫の分類候補を表示します。記録はCSVで書き出せます。',
+      tags: ['iOS', '自然観察', '訪花昆虫'],
+      page: '/houkalog/',
+      links: [
+        { label: 'App Store', href: 'https://apps.apple.com/jp/app/id6818555257', external: true },
+        { label: 'プライバシーポリシー', href: '/houkalog/privacy.html' },
+        { label: 'お問い合わせ', href: '/contact/?app=houkalog' },
+      ],
+    },
+    {
+      year: '2026',
+      title: '1日1本 — 新着論文を1日1本届けるアプリ（iOS アプリ）',
+      desc: '登録したキーワードに合う新着論文の要旨を、PubMed と bioRxiv から1日1本だけ届けるアプリ。合わない論文は差し替えでき、要旨はiOSの翻訳機能で読めます。',
+      tags: ['iOS', 'PubMed', 'bioRxiv', '論文'],
+      page: '/paperaday/',
+      links: [
+        { label: 'App Store', href: 'https://apps.apple.com/jp/app/id6820352554', external: true },
+        { label: 'プライバシーポリシー', href: '/paperaday/privacy.html' },
+        { label: 'お問い合わせ', href: '/contact/?app=paperaday' },
+      ],
     },
   ],
 

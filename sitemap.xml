@@ -2,8 +2,38 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://keigoyamakita.com/</loc>
-    <lastmod>2026-08-16</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>1.0</priority>
+    <lastmod>2026-10-14</lastmod>
+  </url>
+  <url>
+    <loc>https://keigoyamakita.com/research/</loc>
+    <lastmod>2026-10-14</lastmod>
+  </url>
+  <url>
+    <loc>https://keigoyamakita.com/benchmate/</loc>
+    <lastmod>2026-10-14</lastmod>
+  </url>
+  <url>
+    <loc>https://keigoyamakita.com/houkalog/</loc>
+    <lastmod>2026-10-14</lastmod>
+  </url>
+  <url>
+    <loc>https://keigoyamakita.com/paperaday/</loc>
+    <lastmod>2026-10-14</lastmod>
+  </url>
+  <url>
+    <loc>https://keigoyamakita.com/benchmate/privacy.html</loc>
+    <lastmod>2026-10-14</lastmod>
+  </url>
+  <url>
+    <loc>https://keigoyamakita.com/houkalog/privacy.html</loc>
+    <lastmod>2026-10-14</lastmod>
+  </url>
+  <url>
+    <loc>https://keigoyamakita.com/paperaday/privacy.html</loc>
+    <lastmod>2026-10-14</lastmod>
+  </url>
+  <url>
+    <loc>https://keigoyamakita.com/contact/</loc>
+    <lastmod>2026-10-14</lastmod>
   </url>
 </urlset>

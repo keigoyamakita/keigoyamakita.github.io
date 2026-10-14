@@ -64,7 +64,7 @@
   <!-- フォントCSSは非同期で読み込み、初回描画をブロックしないようにする -->
   <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+JP:wght@400;500;600;700;900&display=swap" onload="this.onload=null;this.rel='stylesheet'">
   <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+JP:wght@400;500;600;700;900&display=swap" rel="stylesheet"></noscript>
-  <link rel="stylesheet" href="css/style.css?v=20260919b">
+  <link rel="stylesheet" href="css/style.css?v=20261014a">
 </head>
 <body>
 
@@ -235,6 +235,8 @@
           <div class="pub-list-rest" id="presentationRest" hidden></div>
           <button type="button" class="show-more-btn" id="presentationToggle" aria-expanded="false"></button>
         </div>
+
+        <p class="research-more"><a href="/research/">研究テーマの解説（ATAC-seq によるクロマチン構造の評価）を読む →</a></p>
       </details>
     </div>
   </section>
@@ -306,6 +308,13 @@
   </section>
 
   <footer class="footer">
+    <nav class="footer-nav" aria-label="サイト内のページ">
+      <a href="/research/">研究テーマ</a>
+      <a href="/benchmate/">BenchMate</a>
+      <a href="/houkalog/">訪花ログ</a>
+      <a href="/paperaday/">1日1本</a>
+      <a href="/contact/">アプリへのお問い合わせ</a>
+    </nav>
     <p>&copy; <span id="year"></span> 山北啓吾. Built with HTML / CSS / JS.</p>
   </footer>
 
@@ -315,8 +324,8 @@
     </svg>
   </button>
 
-  <script src="js/data.js?v=20260929a"></script>
-  <script src="js/main.js?v=20260929a"></script>
+  <script src="js/data.js?v=20261014a"></script>
+  <script src="js/main.js?v=20261014a"></script>
   <script src="js/search.js?v=20260919b"></script>
   <script src="js/bg.js?v=20260919b"></script>
 </body>
