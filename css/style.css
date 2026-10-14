@@ -1046,3 +1046,35 @@ img {
 }
 /* 画像そのものにはクリック等を届かせず、親要素が受ける（右クリック保存の対象になりにくくする） */
 .avatar img { pointer-events: none; }
+
+/* ===========================
+   Language switch（日本語 / English）
+=========================== */
+.nav-lang {
+  display: inline-flex;
+  align-items: center;
+  height: 30px;
+  padding: 0 0.65rem;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: var(--text2);
+  white-space: nowrap;
+  transition: color 0.2s, border-color 0.2s;
+}
+.nav-lang:hover { color: var(--accent); border-color: var(--accent); }
+.nav-lang:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+/* スマホではナビ上部が狭いので、切り替えはハンバーガーメニュー内に置く */
+.nav-lang-item { display: none; }
+@media (max-width: 640px) {
+  .nav-lang { display: none; }
+  .nav-lang-item { display: block; }
+}
+
+/* 英語ページ（/en/）では開閉ラベルを英語にする */
+html[lang="en"] .section-collapsible > .section-title::after,
+html[lang="en"] .subsection-title::after { content: 'Hide ▾'; }
+html[lang="en"] .section-collapsible:not([open]) > .section-title::after,
+html[lang="en"] .collapsible:not([open]) .subsection-title::after { content: 'Show ▸'; }
