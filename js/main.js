@@ -231,17 +231,18 @@ function workItemHTML(w) {
     ? `<div class="pub-tags">${w.tags.map(t => `<span class="tag">${t}</span>`).join('')}</div>`
     : '';
   const desc = w.desc ? `<div class="pub-desc">${w.desc}</div>` : '';
+  // 紹介ページ・プライバシー・問い合わせは別タブで開く
   // 紹介ページがある制作物：カード全体を1つのリンクにせず、タイトル＋関連リンク行にする
   // （<a> の入れ子を避け、紹介・プライバシー・問い合わせへの通常リンクをクローラーにも渡すため）
   if (w.page) {
     const links = (w.links || []).map(l => l.external
       ? `<a class="work-link" href="${l.href}" target="_blank" rel="noopener">${l.label} ↗</a>`
-      : `<a class="work-link" href="${l.href}">${l.label}</a>`).join('');
+      : `<a class="work-link" href="${l.href}" target="_blank" rel="noopener">${l.label}</a>`).join('');
     return `<div class="pub-item reveal">
       <div class="pub-year">${w.year || ''}</div>
-      <div class="pub-title"><a class="work-title-link" href="${w.page}">${w.title}</a></div>
+      <div class="pub-title"><a class="work-title-link" href="${w.page}" target="_blank" rel="noopener">${w.title}</a></div>
       ${desc}${tags}
-      <div class="work-links"><a class="work-link work-link-main" href="${w.page}">詳しく見る</a>${links}</div>
+      <div class="work-links"><a class="work-link work-link-main" href="${w.page}" target="_blank" rel="noopener">詳しく見る</a>${links}</div>
     </div>`;
   }
   const inner = `
