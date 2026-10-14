@@ -1,162 +1,245 @@
 /* ===========================
-   下層ページ共通（研究テーマ・アプリ紹介）
-   トップページ（style.css）と同じ配色・書体に揃えた軽量版
+   下層ページ（研究テーマ・制作物の詳細・お問い合わせ・プライバシーポリシー）
+   style.css を読み込んだうえで、下層ページ固有の部品だけを追加する。
+   色・書体・カード・タグ・ボタン・ナビ・フッターは style.css（トップと同じ）をそのまま使う。
 =========================== */
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-:root {
-  --bg:      #0d1117;
-  --bg2:     #161b22;
-  --border:  #30363d;
-  --text:    #e6edf3;
-  --text2:   #8b949e;
-  --accent:  #58a6ff;
-  --accent2: #3fb950;
-  --accent3: #d2a8ff;
-  --font-sans: 'Inter', 'Noto Sans JP', -apple-system, 'Hiragino Sans', sans-serif;
-  --font-mono: 'SFMono-Regular', Consolas, monospace;
-}
+/* 固定ナビ（60px）の下から本文を始める */
+.page { position: relative; z-index: 1; padding-top: 60px; }
+.page .section { padding: 3.5rem 0 5rem; }
 
-body {
-  font-family: var(--font-sans);
-  background: var(--bg);
-  color: var(--text);
-  line-height: 1.8;
-  -webkit-font-smoothing: antialiased;
-}
-
-body::before {
-  content: '';
-  position: fixed;
-  inset: 0;
-  background-image:
-    linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
-  background-size: 48px 48px;
-  pointer-events: none;
-  z-index: 0;
-}
-
-.sub-header, main, .sub-footer { position: relative; z-index: 1; }
-
-a { color: var(--accent); text-decoration: none; }
-a:hover { text-decoration: underline; }
-
-.sub-header {
-  border-bottom: 1px solid var(--border);
-  background: rgba(13, 17, 23, 0.85);
-  backdrop-filter: blur(8px);
-}
-.sub-header-inner {
-  max-width: 820px;
-  margin: 0 auto;
-  padding: 0.9rem 16px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 1rem;
-  flex-wrap: wrap;
-}
-.sub-logo { color: var(--text); font-weight: 800; font-size: 0.95rem; }
-.sub-logo:hover { text-decoration: none; color: var(--accent); }
-.sub-nav { display: flex; gap: 1.1rem; flex-wrap: wrap; font-size: 0.85rem; }
-.sub-nav a { color: var(--text2); }
-.sub-nav a:hover, .sub-nav a[aria-current="page"] { color: var(--text); text-decoration: none; }
-
-main {
-  max-width: 820px;
-  margin: 0 auto;
-  padding: 2.5rem 16px 4rem;
-}
-
-.breadcrumb { font-size: 0.8rem; color: var(--text2); margin-bottom: 1.5rem; }
-.breadcrumb a { color: var(--text2); }
+/* パンくず */
+.breadcrumb { font-size: 0.8rem; color: var(--text2); margin-bottom: 2rem; font-family: var(--font-mono); }
 .breadcrumb ol { list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; gap: 0.4rem; }
-.breadcrumb li + li::before { content: '›'; margin-right: 0.4rem; }
+.breadcrumb a { color: var(--text2); transition: color 0.2s; }
+.breadcrumb a:hover { color: var(--accent); }
+.breadcrumb li + li::before { content: '›'; margin-right: 0.4rem; opacity: 0.6; }
 
-.eyebrow {
-  font-family: var(--font-mono);
+/* ページ見出し（トップの hero-label と同じ緑の等幅ラベル＋大見出し） */
+.page-label {
   font-size: 0.78rem;
+  font-family: var(--font-mono);
   font-weight: 600;
   color: var(--accent2);
-  letter-spacing: 0.04em;
-  margin-bottom: 0.4rem;
+  letter-spacing: 0.06em;
+  margin-bottom: 0.6rem;
 }
-
-h1 { font-size: clamp(1.5rem, 4vw, 2rem); line-height: 1.35; letter-spacing: -0.01em; margin-bottom: 0.8rem; }
-h2 {
-  font-size: 1.2rem;
-  margin: 2.5rem 0 0.8rem;
-  padding-bottom: 0.4rem;
-  border-bottom: 1px solid var(--border);
-}
-h3 { font-size: 1rem; margin: 1.5rem 0 0.4rem; }
-p { margin-bottom: 0.9rem; }
-ul, ol { padding-left: 1.4rem; margin-bottom: 0.9rem; }
-li { margin-bottom: 0.3rem; }
-
-.lead { color: var(--text2); font-size: 1rem; }
-
-.card {
-  background: rgba(22, 27, 34, 0.6);
-  border: 1px solid var(--border);
-  border-radius: 10px;
-  padding: 1.1rem 1.3rem;
+.page-title {
+  font-size: clamp(1.7rem, 4.2vw, 2.4rem);
+  font-weight: 800;
+  line-height: 1.3;
+  letter-spacing: -0.01em;
   margin-bottom: 1rem;
 }
-.card h3 { margin-top: 0; }
-.card p:last-child, .card ul:last-child { margin-bottom: 0; }
-
-.pub-list { list-style: none; padding: 0; }
-.pub-list li {
-  border-left: 2px solid var(--border);
-  padding: 0.2rem 0 0.2rem 0.9rem;
-  margin-bottom: 0.8rem;
-  font-size: 0.92rem;
-}
-.pub-meta { display: block; color: var(--text2); font-size: 0.8rem; }
-
-.tags { display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 0.8rem 0 1.2rem; padding: 0; list-style: none; }
-.tags li {
-  font-size: 0.75rem;
-  font-family: var(--font-mono);
-  padding: 0.2rem 0.6rem;
-  border-radius: 20px;
-  border: 1px solid rgba(88, 166, 255, 0.25);
-  background: rgba(88, 166, 255, 0.08);
-  color: #c9d1d9;
-  margin: 0;
-}
-
-.btn-row { display: flex; flex-wrap: wrap; gap: 0.7rem; margin: 1.2rem 0; }
-.btn {
-  display: inline-block;
-  padding: 0.6rem 1.1rem;
-  border-radius: 8px;
-  font-size: 0.88rem;
-  font-weight: 600;
-  border: 1px solid var(--border);
-  color: var(--text);
-  background: var(--bg2);
-}
-.btn:hover { border-color: var(--accent); text-decoration: none; }
-.btn-primary { background: var(--accent); border-color: var(--accent); color: #0d1117; }
-.btn-primary:hover { background: #79b8ff; }
-
-.app-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 1rem;
-  margin: 1rem 0;
-}
-
-.sub-footer {
-  border-top: 1px solid var(--border);
-  padding: 2rem 16px;
-  text-align: center;
+.page-lead {
   color: var(--text2);
-  font-size: 0.8rem;
+  font-size: 0.95rem;
+  line-height: 1.85;
+  max-width: 46rem;
+  margin-bottom: 1.25rem;
 }
-.sub-footer nav { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.6rem 1.2rem; margin-bottom: 0.8rem; }
-.sub-footer a { color: var(--text2); }
-.sub-footer a:hover { color: var(--text); }
+.page-meta {
+  font-size: 0.8rem;
+  font-family: var(--font-mono);
+  color: var(--text2);
+  line-height: 1.8;
+  margin-bottom: 1.5rem;
+}
+.page-head .pub-tags { margin: 0 0 1.5rem; }
+.page-head .btn-group { margin-top: 0.5rem; }
+
+/* 本文ブロック：トップの section-title（右に罫線が伸びる見出し）を小さめにして使う */
+.page-block { margin-top: 3.5rem; }
+.page-h2 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  margin-bottom: 1.25rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+.page-h2::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+
+/* 本文テキスト */
+.prose { font-size: 0.95rem; line-height: 1.9; color: var(--text); }
+.prose p { margin-bottom: 1rem; }
+.prose p:last-child { margin-bottom: 0; }
+.prose ul, .prose ol { list-style: disc; padding-left: 1.4rem; margin-bottom: 1rem; }
+.prose ol { list-style: decimal; }
+.prose li { margin-bottom: 0.35rem; }
+.prose a, .page-link { color: var(--accent); border-bottom: 1px solid rgba(88, 166, 255, 0.3); transition: border-color 0.2s; }
+.prose a:hover, .page-link:hover { border-bottom-color: var(--accent); }
+.prose strong { color: var(--text); }
+.prose .muted { color: var(--text2); }
+
+/* 表（プライバシーポリシー） */
+.table-wrap { overflow-x: auto; margin-bottom: 1rem; border: 1px solid var(--border); border-radius: 10px; background: rgba(22, 27, 34, 0.6); }
+.prose table { width: 100%; border-collapse: collapse; font-size: 0.88rem; line-height: 1.7; min-width: 520px; }
+.prose th, .prose td { text-align: left; vertical-align: top; padding: 0.75rem 1rem; border-bottom: 1px solid var(--border); }
+.prose tr:last-child td { border-bottom: none; }
+.prose th {
+  font-size: 0.72rem;
+  font-family: var(--font-mono);
+  font-weight: 600;
+  color: var(--accent);
+  letter-spacing: 0.08em;
+  background: rgba(13, 17, 23, 0.5);
+  white-space: nowrap;
+}
+.prose td { color: var(--text2); }
+
+/* カードの並び（トップの about-grid と同じ info-card を使う） */
+.card-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+.info-card p + p { margin-top: 0.6rem; }
+.info-card .pub-title { font-size: 0.95rem; color: var(--text); }
+
+/* 発表リスト：トップの pub-item を流用 */
+.page .pub-item .pub-venue { margin-top: 0.15rem; }
+.award-note { color: var(--accent3); font-weight: 600; }
+
+/* 関連ページへのリンク列 */
+.link-row { display: flex; flex-wrap: wrap; gap: 0.75rem; }
+
+/* ===========================
+   お問い合わせフォーム（トップの配色に合わせたダーク版）
+=========================== */
+.cf { max-width: 680px; }
+.cf form { display: grid; gap: 1.75rem; }
+.cf .field { display: grid; gap: 0.5rem; }
+.cf .label { font-weight: 700; font-size: 0.95rem; color: var(--text); }
+.cf .req, .cf .opt {
+  font-size: 0.7rem;
+  font-family: var(--font-mono);
+  font-weight: 600;
+  margin-left: 0.5rem;
+  padding: 0.1rem 0.45rem;
+  border-radius: 20px;
+  vertical-align: middle;
+}
+.cf .req { color: var(--accent); border: 1px solid rgba(88, 166, 255, 0.4); background: rgba(88, 166, 255, 0.08); }
+.cf .opt { color: var(--text2); border: 1px solid var(--border); }
+.cf .hint { font-size: 0.8rem; color: var(--text2); }
+
+.cf select, .cf input[type="text"], .cf input[type="email"], .cf textarea {
+  width: 100%;
+  font: inherit;
+  font-size: 0.95rem;
+  color: var(--text);
+  background: rgba(22, 27, 34, 0.8);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 0.75rem 0.9rem;
+  transition: border-color 0.2s;
+}
+.cf select:hover, .cf input:hover, .cf textarea:hover { border-color: #444c56; }
+.cf select {
+  appearance: none;
+  -webkit-appearance: none;
+  background-image: linear-gradient(45deg, transparent 50%, var(--text2) 50%), linear-gradient(135deg, var(--text2) 50%, transparent 50%);
+  background-position: calc(100% - 20px) 50%, calc(100% - 14px) 50%;
+  background-size: 6px 6px, 6px 6px;
+  background-repeat: no-repeat;
+  padding-right: 2.5rem;
+}
+.cf select option { background: var(--bg2); color: var(--text); }
+.cf textarea { min-height: 180px; resize: vertical; line-height: 1.7; }
+.cf input::placeholder, .cf textarea::placeholder { color: #6e7681; }
+.cf select:focus-visible, .cf input:focus-visible, .cf textarea:focus-visible, .cf button:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+  border-color: var(--accent);
+}
+.cf .counter { font-size: 0.75rem; font-family: var(--font-mono); color: var(--text2); text-align: right; }
+
+.cf .kinds { display: flex; flex-wrap: wrap; gap: 0.5rem; border: 0; padding: 0; margin: 0; }
+.cf .kinds legend { padding: 0; margin-bottom: 0.5rem; }
+.cf .kind { position: relative; }
+.cf .kind input { position: absolute; opacity: 0; inset: 0; margin: 0; cursor: pointer; }
+.cf .kind span {
+  display: inline-block;
+  padding: 0.4rem 1rem;
+  font-size: 0.85rem;
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  background: rgba(22, 27, 34, 0.8);
+  color: var(--text2);
+  cursor: pointer;
+  transition: all 0.15s;
+}
+.cf .kind span:hover { border-color: var(--accent); color: var(--text); }
+.cf .kind input:checked + span { background: var(--accent); border-color: var(--accent); color: #0d1117; font-weight: 600; }
+.cf .kind input:focus-visible + span { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+.cf .details { border-top: 1px solid var(--border); padding-top: 1.5rem; display: grid; gap: 1.5rem; }
+.cf .details-title { font-size: 0.8rem; color: var(--text2); }
+.cf .two { display: grid; gap: 1.5rem; grid-template-columns: 1fr 1fr; }
+
+.cf .hp { position: absolute; left: -10000px; width: 1px; height: 1px; overflow: hidden; }
+
+.cf .error { color: #f85149; font-size: 0.85rem; }
+.cf .field.invalid select, .cf .field.invalid textarea, .cf .field.invalid input { border-color: #f85149; }
+
+.cf .actions { display: grid; gap: 0.75rem; }
+.cf button[type="submit"], .cf #again {
+  font: inherit;
+  font-size: 0.9rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 8px;
+  padding: 0.7rem 1.6rem;
+  background: var(--accent);
+  color: #0d1117;
+  cursor: pointer;
+  justify-self: start;
+  min-width: 200px;
+  transition: background 0.2s;
+}
+.cf button[type="submit"]:hover { background: #79c0ff; }
+.cf button[disabled] { opacity: 0.6; cursor: wait; }
+.cf .note { font-size: 0.78rem; color: var(--text2); line-height: 1.75; }
+.cf .form-error { background: rgba(248, 81, 73, 0.08); border: 1px solid #f85149; border-radius: 8px; padding: 0.75rem 0.9rem; }
+
+.cf .done {
+  background: rgba(22, 27, 34, 0.6);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--accent2);
+  border-radius: 10px;
+  padding: 1.5rem;
+}
+.cf .done h2 { font-size: 1.15rem; margin-bottom: 0.5rem; }
+.cf .done p { color: var(--text2); font-size: 0.9rem; margin-bottom: 0.75rem; }
+.cf .receipt { font-family: var(--font-mono); font-size: 1.05rem; font-weight: 700; color: var(--text); letter-spacing: 0.04em; }
+.cf #again { background: transparent; color: var(--accent); border: 1px solid var(--accent); }
+.cf #again:hover { background: rgba(88, 166, 255, 0.08); }
+
+[hidden] { display: none !important; }
+
+/* ===========================
+   Responsive
+=========================== */
+@media (max-width: 640px) {
+  .container { padding: 0 1rem; }
+  .page .section { padding: 2.5rem 0 3.5rem; }
+  .card-grid { grid-template-columns: 1fr; }
+  .page-block { margin-top: 2.75rem; }
+  .cf .two { grid-template-columns: 1fr; }
+  .page .btn-group { justify-content: flex-start; }
+}
+
+/* 現在のページをナビで示す */
+.nav-links > li > a[aria-current="page"] { color: var(--text); }
+.nav-links > li > a[aria-current="page"]::after { width: 100%; }
+
+/* 本文中の見出し（プライバシーポリシー等の h2） */
+.prose h2 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  margin: 3rem 0 1.25rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+.prose h2::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+.prose h2:first-child { margin-top: 0; }

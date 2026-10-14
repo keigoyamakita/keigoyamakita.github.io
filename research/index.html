@@ -7,9 +7,6 @@
   <meta name="description" content="山北啓吾（千葉大学大学院）の研究テーマの紹介。ATAC-seqでクロマチンアクセシビリティの変化を捉え、化学物質の非遺伝毒性的なゲノム影響を評価する枠組みの確立に取り組んでいます。">
   <meta name="author" content="山北啓吾 Keigo Yamakita">
   <link rel="canonical" href="https://keigoyamakita.com/research/">
-  <link rel="icon" type="image/svg+xml" href="/images/favicon.svg">
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32.png">
-  <link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
   <meta property="og:type" content="article">
   <meta property="og:url" content="https://keigoyamakita.com/research/">
   <meta property="og:title" content="研究テーマ：ATAC-seqによるクロマチン構造の評価｜山北啓吾">
@@ -17,6 +14,12 @@
   <meta property="og:image" content="https://keigoyamakita.com/images/ogp.png">
   <meta property="og:locale" content="ja_JP">
   <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="研究テーマ：ATAC-seqによるクロマチン構造の評価｜山北啓吾">
+  <meta name="twitter:description" content="山北啓吾（千葉大学大学院）の研究テーマの紹介。ATAC-seqでクロマチンアクセシビリティの変化を捉え、化学物質の非遺伝毒性的なゲノム影響を評価する枠組みの確立に取り組んでいます。">
+  <meta name="twitter:image" content="https://keigoyamakita.com/images/ogp.png">
+  <link rel="icon" type="image/svg+xml" href="/images/favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32.png">
+  <link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
   <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -37,96 +40,155 @@
   ]
 }
   </script>
-  <link rel="stylesheet" href="/css/sub.css?v=20261014a">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+JP:wght@400;500;600;700;900&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+JP:wght@400;500;600;700;900&display=swap" rel="stylesheet"></noscript>
+  <link rel="stylesheet" href="/css/style.css?v=20261014a">
+  <link rel="stylesheet" href="/css/sub.css?v=20261014b">
 </head>
 <body>
-  <header class="sub-header">
-    <div class="sub-header-inner">
-      <a class="sub-logo" href="/">やまきたけいごの部屋🐶</a>
-      <nav class="sub-nav" aria-label="サイト内">
-      <a href="/">トップ</a>
-      <a href="/research/" aria-current="page">研究テーマ</a>
-      <a href="/#works">制作物</a>
-      <a href="/contact/">お問い合わせ</a>
-      </nav>
-    </div>
-  </header>
 
-  <main>
-    <nav class="breadcrumb" aria-label="パンくずリスト">
-      <ol>
-      <li><a href="/">トップ</a></li>
-      <li aria-current="page">研究テーマ</li>
-      </ol>
-    </nav>
-
-    <p class="eyebrow">RESEARCH</p>
-    <h1>研究テーマ：クロマチン構造を指標にした化学物質のゲノム影響評価</h1>
-    <p class="lead">千葉大学大学院 融合理工学府 先進理化学専攻 生物学コース（クロマチン代謝制御研究室）で、化学物質や遺伝子変異がクロマチン構造とゲノム安定性に与える影響を、Wet実験とバイオインフォマティクスの両方から調べています。</p>
-    <ul class="tags">
-      <li>ATAC-seq</li><li>クロマチンアクセシビリティ</li><li>エピゲノム</li><li>非遺伝毒性</li><li>ゲノム不安定性</li><li>バイオインフォマティクス</li>
+  <canvas id="bg-canvas" aria-hidden="true"></canvas>
+  <nav class="nav">
+    <a href="/" class="nav-logo">
+      <span class="nav-logo-mark" aria-hidden="true">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <g transform="rotate(22 12 11.5)">
+            <path d="M7 2.5C7 6.5 17 7.5 17 11.5C17 15.5 7 16.5 7 20.5" stroke="#0d1117" stroke-width="1.6" stroke-linecap="round"/>
+            <path d="M17 2.5C17 6.5 7 7.5 7 11.5C7 15.5 17 16.5 17 20.5" stroke="#0d1117" stroke-width="1.6" stroke-linecap="round" opacity="0.5"/>
+            <line x1="7.6" y1="4.3" x2="16.4" y2="4.3" stroke="#0d1117" stroke-width="1.3" stroke-linecap="round"/>
+            <line x1="7" y1="11.5" x2="17" y2="11.5" stroke="#0d1117" stroke-width="1.3" stroke-linecap="round" opacity="0.6"/>
+            <line x1="7.6" y1="18.7" x2="16.4" y2="18.7" stroke="#0d1117" stroke-width="1.3" stroke-linecap="round"/>
+          </g>
+        </svg>
+      </span>
+      <span class="nav-logo-name">やまきたけいご<span class="nav-logo-sub">の部屋🐶</span></span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="/#about">自己紹介</a></li>
+      <li><a href="/research/" aria-current="page">研究テーマ</a></li>
+      <li><a href="/#research">研究・発表</a></li>
+      <li><a href="/#awards">受賞歴</a></li>
+      <li><a href="/#works">制作物</a></li>
+      <li><a href="/#contact">連絡先</a></li>
     </ul>
-
-    <h2>背景と目的</h2>
-    <p>化学物質の安全性評価では、DNAに直接損傷を与えるかどうか（遺伝毒性）が中心に調べられてきました。一方で、DNA配列を直接傷つけずに、クロマチン構造や遺伝子発現の制御を変えることで発がんなどにつながる作用（非遺伝毒性）は、従来の試験法では捉えにくいとされています。</p>
-    <p>このテーマでは、クロマチン構造の変化を定量的に捉える指標をつくり、化学物質の非遺伝毒性的な影響を評価する枠組みの確立を目指しています。エピゲノム変化が自然免疫応答や発がんリスクにどうつながるのかを明らかにすることが、最終的な目標です。</p>
-
-    <h2>アプローチ</h2>
-    <div class="card">
-      <h3>ATAC-seq によるクロマチン構造の評価</h3>
-      <p>ATAC-seq は、Tn5 トランスポザーゼがアクセスできるゲノム領域を次世代シーケンサーで網羅的に読み取る手法です。化学物質処理の前後でクロマチンアクセシビリティの分布がどう変わるかを比較し、ゲノム全体の変化を評価指標として扱う方法を検討しています。</p>
+    <div class="nav-actions">
+      <button class="nav-toggle" aria-label="メニューを開く">
+        <span></span><span></span><span></span>
+      </button>
     </div>
-    <div class="card">
-      <h3>Wet実験とデータ解析の組み合わせ</h3>
-      <p>細胞培養・ライブラリ調製などのWet実験と、リード処理（BWA / Bowtie2、SAMtools、BEDtools）、ピーク検出（MACS2）、RNA-seq との統合解析などのバイオインフォマティクス解析を一貫して行っています。</p>
-    </div>
+  </nav>
 
-    <h2>主な発表</h2>
-    <ul class="pub-list">
-      <li>Establishment of a Chromatin Dynamics-Based Assessment Framework for Non-Genotoxic Carcinogens
-        <span class="pub-meta">2026 EMGS Annual Meeting（オンライン, 2026年10月）— Student and Early Career Investigator Best Abstract Award 受賞</span></li>
-      <li>クロマチン構造の変化に着目した化学物質の新たな影響評価指標の確立
-        <span class="pub-meta">生命情報科学若手の会 第18回年会（神奈川, 2026年10月）</span></li>
-      <li>ATAC-seqを用いたクロマチン構造を基準とした非遺伝毒性影響評価法の確立
-        <span class="pub-meta">変異機構研究会 第37回「夏の学校」（大阪, 2026年7月）</span></li>
-      <li>Establishment of a chromatin structure-based method for evaluating non-genotoxic genome instability using ATAC-seq
-        <span class="pub-meta">第53回日本毒性学会学術年会（大阪, 2026年7月）</span></li>
-      <li>クロマチンアクセシビリティ解析による非遺伝毒性ゲノム不安定性の評価指標の検討
-        <span class="pub-meta">第19回日本エピジェネティクス研究会年会（千葉, 2026年6月）</span></li>
-      <li>ATAC-seqを用いたクロマチン構造を基準とした高次ゲノム不安定性評価法の確立
-        <span class="pub-meta">日本環境変異原ゲノム学会第54回大会（静岡, 2025年11月）— ベストプレゼンテーション賞 受賞</span></li>
-      <li>ATAC-seqによるクロマチン構造変化を指標とした高次ゲノム不安定性評価
-        <span class="pub-meta">日本環境変異原ゲノム学会第53回大会（岡山, 2024年12月）</span></li>
-    </ul>
+  <main class="page">
+    <section class="section">
+      <div class="container">
+        <nav class="breadcrumb" aria-label="パンくずリスト">
+          <ol>
+          <li><a href="/">トップ</a></li>
+          <li aria-current="page">研究テーマ</li>
+          </ol>
+        </nav>
+        <header class="page-head">
+          <p class="page-label">RESEARCH</p>
+          <h1 class="page-title">研究テーマ：クロマチン構造を指標にした化学物質のゲノム影響評価</h1>
+          <p class="page-lead">千葉大学大学院 融合理工学府 先進理化学専攻 生物学コース（クロマチン代謝制御研究室）で、化学物質や遺伝子変異がクロマチン構造とゲノム安定性に与える影響を、Wet実験とバイオインフォマティクスの両方から調べています。</p>
+          <div class="pub-tags"><span class="tag">ATAC-seq</span><span class="tag">クロマチンアクセシビリティ</span><span class="tag">エピゲノム</span><span class="tag">非遺伝毒性</span><span class="tag">ゲノム不安定性</span><span class="tag">バイオインフォマティクス</span></div>
+        </header>
 
-    <h2>関連する共同研究</h2>
-    <div class="card">
-      <h3>化学物質のエピジェネティック作用を評価するレポーター試験</h3>
-      <p>ハウスキーピング遺伝子 <i>TK</i> を利用し、化学物質によるエピジェネティックな作用を双方向に評価する試験法の論文に共著者として参加しました。</p>
-      <p><a href="https://www.nature.com/articles/s41598-025-92121-6" target="_blank" rel="noopener">Dual-directional epi-genotoxicity assay for assessing chemically induced epigenetic effects utilizing the housekeeping TK gene</a>（Scientific Reports, 2025, 15, 7780）</p>
-    </div>
-    <div class="card">
-      <h3>DNA損傷応答とRNA修飾・自然免疫</h3>
-      <p>DNA損傷応答とイノシンRNA修飾（A-to-I RNA編集）の関係や、DNA修復酵素 RNase H2 の機能不全による自然免疫応答の仕組みを調べる研究に、共同研究者として参加しています。</p>
-    </div>
+        <section class="page-block">
+          <h2 class="page-h2">背景と目的</h2>
+          <div class="prose">
+            <p>化学物質の安全性評価では、DNAに直接損傷を与えるかどうか（遺伝毒性）が中心に調べられてきました。一方で、DNA配列を直接傷つけずに、クロマチン構造や遺伝子発現の制御を変えることで発がんなどにつながる作用（非遺伝毒性）は、従来の試験法では捉えにくいとされています。</p>
+            <p>このテーマでは、クロマチン構造の変化を定量的に捉える指標をつくり、化学物質の非遺伝毒性的な影響を評価する枠組みの確立を目指しています。エピゲノム変化が自然免疫応答や発がんリスクにどうつながるのかを明らかにすることが、最終的な目標です。</p>
+          </div>
+        </section>
 
-    <div class="btn-row">
-      <a class="btn btn-primary" href="/#research">論文・学会発表の一覧を見る</a>
-      <a class="btn" href="/#contact">連絡先</a>
-    </div>
+        <section class="page-block">
+          <h2 class="page-h2">アプローチ</h2>
+          <div class="card-grid">
+            <div class="info-card"><h3>ATAC-seq によるクロマチン構造の評価</h3><p>ATAC-seq は、Tn5 トランスポザーゼがアクセスできるゲノム領域を次世代シーケンサーで網羅的に読み取る手法です。化学物質処理の前後でクロマチンアクセシビリティの分布がどう変わるかを比較し、ゲノム全体の変化を評価指標として扱う方法を検討しています。</p></div>
+            <div class="info-card"><h3>Wet実験とデータ解析の組み合わせ</h3><p>細胞培養・ライブラリ調製などのWet実験と、リード処理（BWA / Bowtie2、SAMtools、BEDtools）、ピーク検出（MACS2）、RNA-seq との統合解析などのバイオインフォマティクス解析を一貫して行っています。</p></div>
+          </div>
+        </section>
 
+        <section class="page-block">
+          <h2 class="page-h2">主な発表</h2>
+          <div class="pub-list">
+            <div class="pub-item">
+              <div class="pub-year">2026.10</div>
+              <div class="pub-title">Establishment of a Chromatin Dynamics-Based Assessment Framework for Non-Genotoxic Carcinogens</div>
+              <div class="pub-venue">2026 EMGS Annual Meeting（オンライン）<br><span class="award-note">Student and Early Career Investigator Best Abstract Award 受賞</span></div>
+            </div>
+            <div class="pub-item">
+              <div class="pub-year">2026.10</div>
+              <div class="pub-title">クロマチン構造の変化に着目した化学物質の新たな影響評価指標の確立</div>
+              <div class="pub-venue">生命情報科学若手の会 第18回年会（神奈川）</div>
+            </div>
+            <div class="pub-item">
+              <div class="pub-year">2026.07</div>
+              <div class="pub-title">ATAC-seqを用いたクロマチン構造を基準とした非遺伝毒性影響評価法の確立</div>
+              <div class="pub-venue">変異機構研究会 第37回「夏の学校」（大阪）</div>
+            </div>
+            <div class="pub-item">
+              <div class="pub-year">2026.07</div>
+              <div class="pub-title">Establishment of a chromatin structure-based method for evaluating non-genotoxic genome instability using ATAC-seq</div>
+              <div class="pub-venue">第53回日本毒性学会学術年会（大阪）</div>
+            </div>
+            <div class="pub-item">
+              <div class="pub-year">2026.06</div>
+              <div class="pub-title">クロマチンアクセシビリティ解析による非遺伝毒性ゲノム不安定性の評価指標の検討</div>
+              <div class="pub-venue">第19回日本エピジェネティクス研究会年会（千葉）</div>
+            </div>
+            <div class="pub-item">
+              <div class="pub-year">2025.11</div>
+              <div class="pub-title">ATAC-seqを用いたクロマチン構造を基準とした高次ゲノム不安定性評価法の確立</div>
+              <div class="pub-venue">日本環境変異原ゲノム学会第54回大会（静岡）<br><span class="award-note">ベストプレゼンテーション賞 受賞</span></div>
+            </div>
+            <div class="pub-item">
+              <div class="pub-year">2024.12</div>
+              <div class="pub-title">ATAC-seqによるクロマチン構造変化を指標とした高次ゲノム不安定性評価</div>
+              <div class="pub-venue">日本環境変異原ゲノム学会第53回大会（岡山）</div>
+            </div>
+          </div>
+        </section>
+
+        <section class="page-block">
+          <h2 class="page-h2">関連する共同研究</h2>
+          <div class="card-grid">
+            <div class="info-card"><h3>エピジェネティック作用の評価試験</h3><p>ハウスキーピング遺伝子 <i>TK</i> を利用し、化学物質によるエピジェネティックな作用を双方向に評価する試験法の論文に共著者として参加しました。</p><p><a class="page-link" href="https://www.nature.com/articles/s41598-025-92121-6" target="_blank" rel="noopener">Dual-directional epi-genotoxicity assay for assessing chemically induced epigenetic effects utilizing the housekeeping TK gene</a>（Scientific Reports, 2025, 15, 7780）</p></div>
+            <div class="info-card"><h3>DNA損傷応答・RNA修飾・自然免疫</h3><p>DNA損傷応答とイノシンRNA修飾（A-to-I RNA編集）の関係や、DNA修復酵素 RNase H2 の機能不全による自然免疫応答の仕組みを調べる研究に、共同研究者として参加しています。</p></div>
+          </div>
+        </section>
+
+        <div class="page-block btn-group">
+          <a class="btn btn-primary" href="/#research">論文・学会発表の一覧を見る</a>
+          <a class="btn btn-outline" href="/#contact">連絡先</a>
+        </div>
+
+      </div>
+    </section>
   </main>
 
-  <footer class="sub-footer">
-    <nav aria-label="サイトマップ">
-    <a href="/">トップ</a>
-    <a href="/research/">研究テーマ</a>
-    <a href="/benchmate/">BenchMate</a>
-    <a href="/houkalog/">訪花ログ</a>
-    <a href="/paperaday/">1日1本</a>
-    <a href="/contact/">アプリへのお問い合わせ</a>
+  <footer class="footer">
+    <nav class="footer-nav" aria-label="サイト内のページ">
+      <a href="/">トップ</a>
+      <a href="/research/">研究テーマ</a>
+      <a href="/benchmate/">BenchMate</a>
+      <a href="/houkalog/">訪花ログ</a>
+      <a href="/paperaday/">1日1本</a>
+      <a href="/contact/">アプリへのお問い合わせ</a>
     </nav>
-    <p>&copy; 2026 山北啓吾</p>
+    <p>&copy; 2026 山北啓吾. Built with HTML / CSS / JS.</p>
   </footer>
+
+  <button id="backToTop" class="back-to-top" aria-label="トップへ戻る" title="トップへ戻る">
+    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <path d="M12 19V5M12 5L5 12M12 5L19 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  </button>
+
+  <script src="/js/sub.js?v=20261014b"></script>
+  <script src="/js/bg.js?v=20260919b"></script>
 </body>
 </html>

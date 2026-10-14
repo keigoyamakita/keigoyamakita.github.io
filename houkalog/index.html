@@ -7,9 +7,6 @@
   <meta name="description" content="花と昆虫の観察を記録する iPhone アプリ。写真・場所・日時・花や虫の名前・行動を記録し、端末内の画像認識で昆虫の分類候補を表示。記録は CSV で書き出せます。">
   <meta name="author" content="山北啓吾 Keigo Yamakita">
   <link rel="canonical" href="https://keigoyamakita.com/houkalog/">
-  <link rel="icon" type="image/svg+xml" href="/images/favicon.svg">
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32.png">
-  <link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
   <meta property="og:type" content="article">
   <meta property="og:url" content="https://keigoyamakita.com/houkalog/">
   <meta property="og:title" content="訪花ログ — 花と昆虫の観察記録アプリ">
@@ -17,6 +14,12 @@
   <meta property="og:image" content="https://keigoyamakita.com/images/ogp.png">
   <meta property="og:locale" content="ja_JP">
   <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="訪花ログ — 花と昆虫の観察記録アプリ">
+  <meta name="twitter:description" content="花と昆虫の観察を記録する iPhone アプリ。写真・場所・日時・花や虫の名前・行動を記録し、端末内の画像認識で昆虫の分類候補を表示。記録は CSV で書き出せます。">
+  <meta name="twitter:image" content="https://keigoyamakita.com/images/ogp.png">
+  <link rel="icon" type="image/svg+xml" href="/images/favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32.png">
+  <link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
   <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -60,71 +63,119 @@
   }
 }
   </script>
-  <link rel="stylesheet" href="/css/sub.css?v=20261014a">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+JP:wght@400;500;600;700;900&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+JP:wght@400;500;600;700;900&display=swap" rel="stylesheet"></noscript>
+  <link rel="stylesheet" href="/css/style.css?v=20261014a">
+  <link rel="stylesheet" href="/css/sub.css?v=20261014b">
 </head>
 <body>
-  <header class="sub-header">
-    <div class="sub-header-inner">
-      <a class="sub-logo" href="/">やまきたけいごの部屋🐶</a>
-      <nav class="sub-nav" aria-label="サイト内">
-      <a href="/">トップ</a>
-      <a href="/research/">研究テーマ</a>
-      <a href="/#works">制作物</a>
-      <a href="/contact/">お問い合わせ</a>
-      </nav>
-    </div>
-  </header>
 
-  <main>
-    <nav class="breadcrumb" aria-label="パンくずリスト">
-      <ol>
-      <li><a href="/">トップ</a></li>
+  <canvas id="bg-canvas" aria-hidden="true"></canvas>
+  <nav class="nav">
+    <a href="/" class="nav-logo">
+      <span class="nav-logo-mark" aria-hidden="true">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <g transform="rotate(22 12 11.5)">
+            <path d="M7 2.5C7 6.5 17 7.5 17 11.5C17 15.5 7 16.5 7 20.5" stroke="#0d1117" stroke-width="1.6" stroke-linecap="round"/>
+            <path d="M17 2.5C17 6.5 7 7.5 7 11.5C7 15.5 17 16.5 17 20.5" stroke="#0d1117" stroke-width="1.6" stroke-linecap="round" opacity="0.5"/>
+            <line x1="7.6" y1="4.3" x2="16.4" y2="4.3" stroke="#0d1117" stroke-width="1.3" stroke-linecap="round"/>
+            <line x1="7" y1="11.5" x2="17" y2="11.5" stroke="#0d1117" stroke-width="1.3" stroke-linecap="round" opacity="0.6"/>
+            <line x1="7.6" y1="18.7" x2="16.4" y2="18.7" stroke="#0d1117" stroke-width="1.3" stroke-linecap="round"/>
+          </g>
+        </svg>
+      </span>
+      <span class="nav-logo-name">やまきたけいご<span class="nav-logo-sub">の部屋🐶</span></span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="/#about">自己紹介</a></li>
+      <li><a href="/research/">研究テーマ</a></li>
+      <li><a href="/#research">研究・発表</a></li>
+      <li><a href="/#awards">受賞歴</a></li>
       <li><a href="/#works">制作物</a></li>
-      <li aria-current="page">訪花ログ</li>
-      </ol>
-    </nav>
-
-    <p class="eyebrow">iOS APP</p>
-    <h1>訪花ログ — 花と昆虫の観察記録アプリ</h1>
-    <p class="lead">花を訪れる昆虫の観察を記録するためのアプリです。野外での自然観察や、子ども向けの観察プログラムでの利用も想定しています。</p>
-    <ul class="tags"><li>iOS</li><li>自然観察</li><li>訪花昆虫</li><li>植物</li><li>フィールドワーク</li></ul>
-    <div class="btn-row">
-      <a class="btn btn-primary" href="https://apps.apple.com/jp/app/id6818555257" target="_blank" rel="noopener">App Store で見る</a>
-      <a class="btn" href="/houkalog/privacy.html">プライバシーポリシー</a>
-      <a class="btn" href="/contact/?app=houkalog">お問い合わせ</a>
-    </div>
-
-    <h2>主な機能</h2>
-    <div class="app-grid">
-      <div class="card"><h3>写真で記録</h3><p>カメラで撮影するか、写真ライブラリから選んで観察記録にします。</p></div>
-      <div class="card"><h3>場所と日時</h3><p>端末の位置情報や写真に含まれる情報から、観察した場所と日時を記録します。</p></div>
-      <div class="card"><h3>観察内容の入力</h3><p>花・虫の名前、行動、天気、メモ、調査名、記録者名を残せます。</p></div>
-      <div class="card"><h3>昆虫の分類候補</h3><p>端末内の画像認識（Apple Vision）で昆虫の分類候補を表示します。写真は外部に送信されません。</p></div>
-      <div class="card"><h3>CSV 書き出し</h3><p>記録を CSV で書き出して、集計や共有に使えます。</p></div>
-    </div>
-    <h2>データの扱い</h2>
-    <p>記録はすべて端末内にのみ保存され、広告や利用状況の分析ツールは使っていません。お子さまが使う場合は、記録者名などに氏名を入力しないことをおすすめします。詳しくは<a href="/houkalog/privacy.html">プライバシーポリシー</a>をご覧ください。</p>
-
-    <h2>サポート</h2>
-    <ul>
-      <li><a href="/houkalog/privacy.html">プライバシーポリシー</a></li>
-      <li><a href="/contact/?app=houkalog">不具合報告・ご要望・ご質問（お問い合わせフォーム）</a></li>
+      <li><a href="/#contact">連絡先</a></li>
     </ul>
-    <h2>ほかのアプリ</h2>
-    <p><a href="/benchmate/">BenchMate</a> ／ <a href="/houkalog/">訪花ログ</a> ／ <a href="/paperaday/">1日1本</a></p>
+    <div class="nav-actions">
+      <button class="nav-toggle" aria-label="メニューを開く">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
 
+  <main class="page">
+    <section class="section">
+      <div class="container">
+        <nav class="breadcrumb" aria-label="パンくずリスト">
+          <ol>
+          <li><a href="/">トップ</a></li>
+          <li><a href="/#works">制作物</a></li>
+          <li aria-current="page">訪花ログ</li>
+          </ol>
+        </nav>
+        <header class="page-head">
+          <p class="page-label">iOS APP</p>
+          <h1 class="page-title">訪花ログ — 花と昆虫の観察記録アプリ</h1>
+          <p class="page-lead">花を訪れる昆虫の観察を記録するためのアプリです。野外での自然観察や、子ども向けの観察プログラムでの利用も想定しています。</p>
+          <div class="pub-tags"><span class="tag">iOS</span><span class="tag">自然観察</span><span class="tag">訪花昆虫</span><span class="tag">植物</span><span class="tag">フィールドワーク</span></div>
+          <div class="btn-group"><a class="btn btn-primary" href="https://apps.apple.com/jp/app/id6818555257" target="_blank" rel="noopener">App Store で見る ↗</a><a class="btn btn-outline" href="/houkalog/privacy.html">プライバシーポリシー</a><a class="btn btn-outline" href="/contact/?app=houkalog">お問い合わせ</a></div>
+        </header>
+
+        <section class="page-block">
+          <h2 class="page-h2">主な機能</h2>
+          <div class="card-grid">
+            <div class="info-card"><h3>写真で記録</h3><p>カメラで撮影するか、写真ライブラリから選んで観察記録にします。</p></div>
+            <div class="info-card"><h3>場所と日時</h3><p>端末の位置情報や写真に含まれる情報から、観察した場所と日時を記録します。</p></div>
+            <div class="info-card"><h3>観察内容の入力</h3><p>花・虫の名前、行動、天気、メモ、調査名、記録者名を残せます。</p></div>
+            <div class="info-card"><h3>昆虫の分類候補</h3><p>端末内の画像認識（Apple Vision）で昆虫の分類候補を表示します。写真は外部に送信されません。</p></div>
+            <div class="info-card"><h3>CSV 書き出し</h3><p>記録を CSV で書き出して、集計や共有に使えます。</p></div>
+          </div>
+        </section>
+
+        <section class="page-block">
+          <h2 class="page-h2">データの扱い</h2>
+          <div class="prose"><p>記録はすべて端末内にのみ保存され、広告や利用状況の分析ツールは使っていません。お子さまが使う場合は、記録者名などに氏名を入力しないことをおすすめします。詳しくは<a href="/houkalog/privacy.html">プライバシーポリシー</a>をご覧ください。</p></div>
+        </section>
+
+        <section class="page-block">
+          <h2 class="page-h2">サポート</h2>
+          <div class="link-row">
+            <a class="btn btn-outline" href="/houkalog/privacy.html">プライバシーポリシー</a>
+            <a class="btn btn-outline" href="/contact/?app=houkalog">不具合報告・ご要望・ご質問</a>
+          </div>
+        </section>
+
+        <section class="page-block">
+          <h2 class="page-h2">ほかのアプリ</h2>
+          <div class="link-row">
+            <a class="btn btn-outline" href="/benchmate/">BenchMate</a>
+            <a class="btn btn-outline" href="/paperaday/">1日1本</a>
+          </div>
+        </section>
+
+      </div>
+    </section>
   </main>
 
-  <footer class="sub-footer">
-    <nav aria-label="サイトマップ">
-    <a href="/">トップ</a>
-    <a href="/research/">研究テーマ</a>
-    <a href="/benchmate/">BenchMate</a>
-    <a href="/houkalog/">訪花ログ</a>
-    <a href="/paperaday/">1日1本</a>
-    <a href="/contact/">アプリへのお問い合わせ</a>
+  <footer class="footer">
+    <nav class="footer-nav" aria-label="サイト内のページ">
+      <a href="/">トップ</a>
+      <a href="/research/">研究テーマ</a>
+      <a href="/benchmate/">BenchMate</a>
+      <a href="/houkalog/">訪花ログ</a>
+      <a href="/paperaday/">1日1本</a>
+      <a href="/contact/">アプリへのお問い合わせ</a>
     </nav>
-    <p>&copy; 2026 山北啓吾</p>
+    <p>&copy; 2026 山北啓吾. Built with HTML / CSS / JS.</p>
   </footer>
+
+  <button id="backToTop" class="back-to-top" aria-label="トップへ戻る" title="トップへ戻る">
+    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <path d="M12 19V5M12 5L5 12M12 5L19 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  </button>
+
+  <script src="/js/sub.js?v=20261014b"></script>
+  <script src="/js/bg.js?v=20260919b"></script>
 </body>
 </html>

@@ -1,232 +1,211 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>アプリへのお問い合わせ｜山北啓吾</title>
-<meta name="description" content="山北啓吾が制作したアプリ（訪花ログ、BenchMate、1日1本）への不具合報告・改善要望・質問の受付ページです。">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap" rel="stylesheet">
-<style>
-  :root {
-    --paper: #f4f7f4;
-    --surface: #ffffff;
-    --ink: #1d2a23;
-    --muted: #5d6c63;
-    --line: #c9d3cc;
-    --accent: #2b6a55;
-    --accent-ink: #ffffff;
-    --accent-soft: #e2eee8;
-    --error: #b3261e;
-    --focus: #1f5fbf;
-  }
-  @media (prefers-color-scheme: dark) {
-    :root {
-      --paper: #141a17;
-      --surface: #1c2420;
-      --ink: #e4ebe6;
-      --muted: #9aa9a0;
-      --line: #36433c;
-      --accent: #6fbf9f;
-      --accent-ink: #0f1a15;
-      --accent-soft: #233a30;
-      --error: #f2867d;
-      --focus: #8ab4f8;
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>アプリへのお問い合わせ｜山北啓吾</title>
+  <meta name="description" content="山北啓吾が制作したアプリ（訪花ログ、BenchMate、1日1本）への不具合報告・改善要望・質問の受付ページです。">
+  <meta name="author" content="山北啓吾 Keigo Yamakita">
+  <link rel="canonical" href="https://keigoyamakita.com/contact/">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://keigoyamakita.com/contact/">
+  <meta property="og:title" content="アプリへのお問い合わせ｜山北啓吾">
+  <meta property="og:description" content="山北啓吾が制作したアプリ（訪花ログ、BenchMate、1日1本）への不具合報告・改善要望・質問の受付ページです。">
+  <meta property="og:image" content="https://keigoyamakita.com/images/ogp.png">
+  <meta property="og:locale" content="ja_JP">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="アプリへのお問い合わせ｜山北啓吾">
+  <meta name="twitter:description" content="山北啓吾が制作したアプリ（訪花ログ、BenchMate、1日1本）への不具合報告・改善要望・質問の受付ページです。">
+  <meta name="twitter:image" content="https://keigoyamakita.com/images/ogp.png">
+  <link rel="icon" type="image/svg+xml" href="/images/favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32.png">
+  <link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "トップ",
+      "item": "https://keigoyamakita.com/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "アプリへのお問い合わせ",
+      "item": "https://keigoyamakita.com/contact/index.html"
     }
-  }
-  * { box-sizing: border-box; }
-  html { -webkit-text-size-adjust: 100%; }
-  body {
-    margin: 0;
-    background: var(--paper);
-    color: var(--ink);
-    font-family: "Zen Kaku Gothic New", "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Noto Sans JP", "Yu Gothic", sans-serif;
-    font-size: 16px;
-    line-height: 1.8;
-  }
-  a { color: var(--accent); }
-  .wrap { max-width: 640px; margin: 0 auto; padding: 24px 20px 72px; }
-  .site { font-size: 0.875rem; margin-bottom: 40px; }
-  .site a { color: var(--muted); text-decoration: none; }
-  .site a:hover { text-decoration: underline; }
-  h1 { font-size: 1.75rem; line-height: 1.4; font-weight: 700; margin: 0 0 12px; letter-spacing: 0.02em; }
-  .lead { color: var(--muted); margin: 0 0 36px; }
-
-  form { display: grid; gap: 28px; }
-  .field { display: grid; gap: 8px; }
-  .label { font-weight: 700; font-size: 1rem; }
-  .req { font-weight: 500; font-size: 0.8125rem; color: var(--accent); margin-left: 6px; }
-  .opt { font-weight: 400; font-size: 0.8125rem; color: var(--muted); margin-left: 6px; }
-  .hint { font-size: 0.8125rem; color: var(--muted); margin: 0; }
-
-  select, input[type="text"], input[type="email"], textarea {
-    width: 100%;
-    font: inherit;
-    color: var(--ink);
-    background: var(--surface);
-    border: 1px solid var(--line);
-    border-radius: 8px;
-    padding: 12px 14px;
-  }
-  select {
-    appearance: none;
-    -webkit-appearance: none;
-    background-image: linear-gradient(45deg, transparent 50%, var(--muted) 50%), linear-gradient(135deg, var(--muted) 50%, transparent 50%);
-    background-position: calc(100% - 20px) 50%, calc(100% - 14px) 50%;
-    background-size: 6px 6px, 6px 6px;
-    background-repeat: no-repeat;
-    padding-right: 40px;
-  }
-  textarea { min-height: 180px; resize: vertical; line-height: 1.7; }
-  select:focus-visible, input:focus-visible, textarea:focus-visible, button:focus-visible {
-    outline: 3px solid var(--focus);
-    outline-offset: 2px;
-  }
-  .counter { font-size: 0.8125rem; color: var(--muted); text-align: right; margin: 0; }
-
-  .kinds { display: flex; flex-wrap: wrap; gap: 8px; border: 0; padding: 0; margin: 0; }
-  .kinds legend { padding: 0; margin-bottom: 8px; }
-  .kind { position: relative; }
-  .kind input { position: absolute; opacity: 0; inset: 0; margin: 0; cursor: pointer; }
-  .kind span {
-    display: inline-block;
-    padding: 8px 18px;
-    border: 1px solid var(--line);
-    border-radius: 999px;
-    background: var(--surface);
-    cursor: pointer;
-    transition: background-color .15s, border-color .15s;
-  }
-  .kind input:checked + span { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); }
-  .kind input:focus-visible + span { outline: 3px solid var(--focus); outline-offset: 2px; }
-
-  .details { border-top: 1px solid var(--line); padding-top: 24px; display: grid; gap: 24px; }
-  .details-title { font-size: 0.875rem; color: var(--muted); margin: 0; }
-  .two { display: grid; gap: 24px; grid-template-columns: 1fr 1fr; }
-  @media (max-width: 560px) { .two { grid-template-columns: 1fr; } }
-
-  .hp { position: absolute; left: -10000px; width: 1px; height: 1px; overflow: hidden; }
-
-  .error { color: var(--error); font-size: 0.875rem; margin: 0; }
-  .field.invalid select, .field.invalid textarea, .field.invalid input { border-color: var(--error); }
-
-  .actions { display: grid; gap: 12px; }
-  button {
-    font: inherit;
-    font-weight: 700;
-    border: 0;
-    border-radius: 8px;
-    padding: 14px 24px;
-    background: var(--accent);
-    color: var(--accent-ink);
-    cursor: pointer;
-    justify-self: start;
-    min-width: 200px;
-  }
-  button[disabled] { opacity: .6; cursor: wait; }
-  .note { font-size: 0.8125rem; color: var(--muted); margin: 0; }
-  .form-error { background: var(--surface); border: 1px solid var(--error); border-radius: 8px; padding: 12px 14px; }
-
-  .done { background: var(--surface); border: 1px solid var(--line); border-left: 4px solid var(--accent); border-radius: 8px; padding: 24px; }
-  .done h2 { margin: 0 0 8px; font-size: 1.25rem; }
-  .done p { margin: 0 0 12px; }
-  .receipt { font-size: 1.125rem; font-weight: 700; letter-spacing: 0.04em; }
-  .done button { background: transparent; color: var(--accent); border: 1px solid var(--accent); }
-
-  footer { margin-top: 56px; font-size: 0.8125rem; color: var(--muted); }
-  [hidden] { display: none !important; }
-  @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
-</style>
+  ]
+}
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+JP:wght@400;500;600;700;900&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+JP:wght@400;500;600;700;900&display=swap" rel="stylesheet"></noscript>
+  <link rel="stylesheet" href="/css/style.css?v=20261014a">
+  <link rel="stylesheet" href="/css/sub.css?v=20261014b">
 </head>
 <body>
-<div class="wrap">
-  <div class="site"><a href="https://keigoyamakita.com/">山北啓吾</a></div>
 
-  <h1>アプリへのお問い合わせ</h1>
-  <p class="lead">不具合の報告、改善のご要望、使い方のご質問を受け付けています。いただいた内容は今後のアップデートの参考にします。</p>
-
-  <form id="contact-form" novalidate>
-    <div class="field" id="f-app">
-      <label class="label" for="app">対象のアプリ<span class="req">必須</span></label>
-      <select id="app" name="app" required>
-        <option value="">選択してください</option>
-        <option value="houkalog">訪花ログ</option>
-        <option value="benchmate">BenchMate</option>
-        <option value="paperaday">1日1本</option>
-        <option value="other">その他・このサイトについて</option>
-      </select>
-      <p class="error" id="e-app" hidden>アプリを選択してください。</p>
+  <canvas id="bg-canvas" aria-hidden="true"></canvas>
+  <nav class="nav">
+    <a href="/" class="nav-logo">
+      <span class="nav-logo-mark" aria-hidden="true">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <g transform="rotate(22 12 11.5)">
+            <path d="M7 2.5C7 6.5 17 7.5 17 11.5C17 15.5 7 16.5 7 20.5" stroke="#0d1117" stroke-width="1.6" stroke-linecap="round"/>
+            <path d="M17 2.5C17 6.5 7 7.5 7 11.5C7 15.5 17 16.5 17 20.5" stroke="#0d1117" stroke-width="1.6" stroke-linecap="round" opacity="0.5"/>
+            <line x1="7.6" y1="4.3" x2="16.4" y2="4.3" stroke="#0d1117" stroke-width="1.3" stroke-linecap="round"/>
+            <line x1="7" y1="11.5" x2="17" y2="11.5" stroke="#0d1117" stroke-width="1.3" stroke-linecap="round" opacity="0.6"/>
+            <line x1="7.6" y1="18.7" x2="16.4" y2="18.7" stroke="#0d1117" stroke-width="1.3" stroke-linecap="round"/>
+          </g>
+        </svg>
+      </span>
+      <span class="nav-logo-name">やまきたけいご<span class="nav-logo-sub">の部屋🐶</span></span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="/#about">自己紹介</a></li>
+      <li><a href="/research/">研究テーマ</a></li>
+      <li><a href="/#research">研究・発表</a></li>
+      <li><a href="/#awards">受賞歴</a></li>
+      <li><a href="/#works">制作物</a></li>
+      <li><a href="/#contact">連絡先</a></li>
+    </ul>
+    <div class="nav-actions">
+      <button class="nav-toggle" aria-label="メニューを開く">
+        <span></span><span></span><span></span>
+      </button>
     </div>
+  </nav>
 
-    <div class="field" id="f-category">
-      <fieldset class="kinds">
-        <legend class="label">内容の種類<span class="req">必須</span></legend>
-        <label class="kind"><input type="radio" name="category" value="bug"><span>不具合</span></label>
-        <label class="kind"><input type="radio" name="category" value="request"><span>改善要望</span></label>
-        <label class="kind"><input type="radio" name="category" value="question"><span>質問</span></label>
-        <label class="kind"><input type="radio" name="category" value="other"><span>その他</span></label>
-      </fieldset>
-      <p class="error" id="e-category" hidden>内容の種類を選択してください。</p>
-    </div>
+  <main class="page">
+    <section class="section">
+      <div class="container">
+        <nav class="breadcrumb" aria-label="パンくずリスト">
+          <ol>
+          <li><a href="/">トップ</a></li>
+          <li aria-current="page">アプリへのお問い合わせ</li>
+          </ol>
+        </nav>
+        <header class="page-head">
+          <p class="page-label">CONTACT</p>
+          <h1 class="page-title">アプリへのお問い合わせ</h1>
+          <p class="page-lead">不具合の報告、改善のご要望、使い方のご質問を受け付けています。いただいた内容は今後のアップデートの参考にします。</p>
+        </header>
 
-    <div class="field" id="f-message">
-      <label class="label" for="message">内容<span class="req">必須</span></label>
-      <p class="hint" id="message-hint">不具合の場合は、どの画面で何をしたときに起きたかを書いていただけると助かります。</p>
-      <textarea id="message" name="message" maxlength="4000" required aria-describedby="message-hint counter"></textarea>
-      <p class="counter" id="counter">0 / 4000</p>
-      <p class="error" id="e-message" hidden>内容を5文字以上入力してください。</p>
-    </div>
+        <div class="cf page-block">
+          <form id="contact-form" novalidate>
+              <div class="field" id="f-app">
+                <label class="label" for="app">対象のアプリ<span class="req">必須</span></label>
+                <select id="app" name="app" required>
+                  <option value="">選択してください</option>
+                  <option value="houkalog">訪花ログ</option>
+                  <option value="benchmate">BenchMate</option>
+                  <option value="paperaday">1日1本</option>
+                  <option value="other">その他・このサイトについて</option>
+                </select>
+                <p class="error" id="e-app" hidden>アプリを選択してください。</p>
+              </div>
 
-    <div class="details">
-      <p class="details-title">分かる範囲で入力してください。</p>
-      <div class="two">
-        <div class="field">
-          <label class="label" for="device">端末とiOSのバージョン<span class="opt">任意</span></label>
-          <input type="text" id="device" name="device" maxlength="100" placeholder="例：iPhone 15、iOS 18.1" autocomplete="off">
+              <div class="field" id="f-category">
+                <fieldset class="kinds">
+                  <legend class="label">内容の種類<span class="req">必須</span></legend>
+                  <label class="kind"><input type="radio" name="category" value="bug"><span>不具合</span></label>
+                  <label class="kind"><input type="radio" name="category" value="request"><span>改善要望</span></label>
+                  <label class="kind"><input type="radio" name="category" value="question"><span>質問</span></label>
+                  <label class="kind"><input type="radio" name="category" value="other"><span>その他</span></label>
+                </fieldset>
+                <p class="error" id="e-category" hidden>内容の種類を選択してください。</p>
+              </div>
+
+              <div class="field" id="f-message">
+                <label class="label" for="message">内容<span class="req">必須</span></label>
+                <p class="hint" id="message-hint">不具合の場合は、どの画面で何をしたときに起きたかを書いていただけると助かります。</p>
+                <textarea id="message" name="message" maxlength="4000" required aria-describedby="message-hint counter"></textarea>
+                <p class="counter" id="counter">0 / 4000</p>
+                <p class="error" id="e-message" hidden>内容を5文字以上入力してください。</p>
+              </div>
+
+              <div class="details">
+                <p class="details-title">分かる範囲で入力してください。</p>
+                <div class="two">
+                  <div class="field">
+                    <label class="label" for="device">端末とiOSのバージョン<span class="opt">任意</span></label>
+                    <input type="text" id="device" name="device" maxlength="100" placeholder="例：iPhone 15、iOS 18.1" autocomplete="off">
+                  </div>
+                  <div class="field">
+                    <label class="label" for="appVersion">アプリのバージョン<span class="opt">任意</span></label>
+                    <input type="text" id="appVersion" name="appVersion" maxlength="30" placeholder="例：1.0" autocomplete="off">
+                  </div>
+                </div>
+                <div class="field" id="f-email">
+                  <label class="label" for="email">返信先のメールアドレス<span class="opt">任意</span></label>
+                  <input type="email" id="email" name="email" maxlength="254" autocomplete="email" inputmode="email">
+                  <p class="hint">返信が必要な場合のみ入力してください。</p>
+                  <p class="error" id="e-email" hidden>メールアドレスの形式を確認してください。</p>
+                </div>
+              </div>
+
+              <div class="hp" aria-hidden="true">
+                <label for="website">このフィールドは空のままにしてください</label>
+                <input type="text" id="website" name="website" tabindex="-1" autocomplete="off">
+              </div>
+
+              <div class="actions">
+                <p class="error form-error" id="e-form" role="alert" hidden></p>
+                <button type="submit" id="submit">送信する</button>
+                <p class="note">入力内容は、お問い合わせへの対応とアプリの改善のためにのみ使います。送信内容は Google スプレッドシートに保存されます。お子さまの氏名など、個人を特定できる情報は書かないでください。</p>
+              </div>
+            </form>
+
+            <section class="done" id="done" hidden tabindex="-1" aria-live="polite">
+              <h2>送信しました</h2>
+              <p>お問い合わせを受け付けました。メールアドレスを入力された場合は、必要に応じて返信します。</p>
+              <p>受付番号 <span class="receipt" id="receipt"></span></p>
+              <button type="button" id="again">別の内容を送る</button>
+            </section>
         </div>
-        <div class="field">
-          <label class="label" for="appVersion">アプリのバージョン<span class="opt">任意</span></label>
-          <input type="text" id="appVersion" name="appVersion" maxlength="30" placeholder="例：1.0" autocomplete="off">
-        </div>
+
+        <section class="page-block">
+          <h2 class="page-h2">アプリとプライバシーポリシー</h2>
+          <div class="link-row">
+            <a class="btn btn-outline" href="/benchmate/">BenchMate</a>
+            <a class="btn btn-outline" href="/houkalog/">訪花ログ</a>
+            <a class="btn btn-outline" href="/paperaday/">1日1本</a>
+          </div>
+          <p class="page-meta" style="margin-top:1rem">
+            <a class="page-link" href="/benchmate/privacy.html">BenchMate プライバシーポリシー</a> ／
+            <a class="page-link" href="/houkalog/privacy.html">訪花ログ プライバシーポリシー</a> ／
+            <a class="page-link" href="/paperaday/privacy.html">1日1本 プライバシーポリシー</a>
+          </p>
+        </section>
+
       </div>
-      <div class="field" id="f-email">
-        <label class="label" for="email">返信先のメールアドレス<span class="opt">任意</span></label>
-        <input type="email" id="email" name="email" maxlength="254" autocomplete="email" inputmode="email">
-        <p class="hint">返信が必要な場合のみ入力してください。</p>
-        <p class="error" id="e-email" hidden>メールアドレスの形式を確認してください。</p>
-      </div>
-    </div>
+    </section>
+  </main>
 
-    <div class="hp" aria-hidden="true">
-      <label for="website">このフィールドは空のままにしてください</label>
-      <input type="text" id="website" name="website" tabindex="-1" autocomplete="off">
-    </div>
-
-    <div class="actions">
-      <p class="error form-error" id="e-form" role="alert" hidden></p>
-      <button type="submit" id="submit">送信する</button>
-      <p class="note">入力内容は、お問い合わせへの対応とアプリの改善のためにのみ使います。送信内容は Google スプレッドシートに保存されます。お子さまの氏名など、個人を特定できる情報は書かないでください。</p>
-    </div>
-  </form>
-
-  <section class="done" id="done" hidden tabindex="-1" aria-live="polite">
-    <h2>送信しました</h2>
-    <p>お問い合わせを受け付けました。メールアドレスを入力された場合は、必要に応じて返信します。</p>
-    <p>受付番号 <span class="receipt" id="receipt"></span></p>
-    <button type="button" id="again">別の内容を送る</button>
-  </section>
-
-  <footer>
-    <a href="https://keigoyamakita.com/houkalog/">訪花ログ</a> ／
-    <a href="https://keigoyamakita.com/benchmate/">BenchMate</a> ／
-    <a href="https://keigoyamakita.com/paperaday/">1日1本</a><br>
-    <a href="https://keigoyamakita.com/houkalog/privacy.html">訪花ログ プライバシーポリシー</a> ／
-    <a href="https://keigoyamakita.com/benchmate/privacy.html">BenchMate プライバシーポリシー</a> ／
-    <a href="https://keigoyamakita.com/paperaday/privacy.html">1日1本 プライバシーポリシー</a>
+  <footer class="footer">
+    <nav class="footer-nav" aria-label="サイト内のページ">
+      <a href="/">トップ</a>
+      <a href="/research/">研究テーマ</a>
+      <a href="/benchmate/">BenchMate</a>
+      <a href="/houkalog/">訪花ログ</a>
+      <a href="/paperaday/">1日1本</a>
+      <a href="/contact/">アプリへのお問い合わせ</a>
+    </nav>
+    <p>&copy; 2026 山北啓吾. Built with HTML / CSS / JS.</p>
   </footer>
-</div>
 
+  <button id="backToTop" class="back-to-top" aria-label="トップへ戻る" title="トップへ戻る">
+    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <path d="M12 19V5M12 5L5 12M12 5L19 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  </button>
+
+  <script src="/js/sub.js?v=20261014b"></script>
+  <script src="/js/bg.js?v=20260919b"></script>
 <script>
 (function () {
   // Apps Script を「ウェブアプリ」としてデプロイしたときに表示される URL（/exec で終わるもの）を貼り付けます。

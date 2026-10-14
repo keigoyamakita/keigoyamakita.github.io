@@ -1,55 +1,121 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="ja">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="robots" content="noindex">
-<title>No Book No Life（仮称）｜読書記録アプリ（開発中）</title>
-<meta name="description" content="読んだ本の記録と星評価・「楽しかった点」をもとに、次に読む本を理由付きで提案する iPhone 向け読書記録アプリ（開発中）。">
-<style>
-  body { font-family: -apple-system, "Hiragino Sans", sans-serif; max-width: 720px; margin: 0 auto; padding: 24px 16px 64px; line-height: 1.8; color: #222; background: #fff; }
-  h1 { font-size: 1.5rem; }
-  h2 { font-size: 1.1rem; margin-top: 2em; border-bottom: 1px solid #ddd; padding-bottom: 4px; }
-  table { border-collapse: collapse; width: 100%; font-size: .95rem; }
-  th, td { border: 1px solid #ddd; padding: 8px; text-align: left; vertical-align: top; }
-  th { background: #f5f5f5; }
-  .meta { color: #666; font-size: .9rem; }
-  a { color: #0a66c2; }
-  @media (prefers-color-scheme: dark) {
-    body { background: #111; color: #eee; }
-    th { background: #222; }
-    th, td, h2 { border-color: #444; }
-    .meta { color: #aaa; }
-    a { color: #6cb4ff; }
-  }
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex">
+  <title>No Book No Life（仮称）</title>
+  <meta name="description" content="読んだ本の記録と星評価・「楽しかった点」をもとに、次に読む本を理由付きで提案する iPhone 向け読書記録アプリ（開発中）。">
+  <meta name="author" content="山北啓吾 Keigo Yamakita">
+  <link rel="icon" type="image/svg+xml" href="/images/favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32.png">
+  <link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+JP:wght@400;500;600;700;900&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+JP:wght@400;500;600;700;900&display=swap" rel="stylesheet"></noscript>
+  <link rel="stylesheet" href="/css/style.css?v=20261014a">
+  <link rel="stylesheet" href="/css/sub.css?v=20261014b">
 </head>
 <body>
-<h1>No Book No Life（仮称）</h1>
-<p class="meta">iPhone向け読書記録アプリ（開発中）<br>提供者：山北啓吾（個人）</p>
 
-<p>読んだ本を記録し、星評価と「何が楽しかったか」をもとに、次に読む本を理由付きで提案するアプリです。現在開発中で、App Storeでは公開していません。</p>
+  <canvas id="bg-canvas" aria-hidden="true"></canvas>
+  <nav class="nav">
+    <a href="/" class="nav-logo">
+      <span class="nav-logo-mark" aria-hidden="true">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <g transform="rotate(22 12 11.5)">
+            <path d="M7 2.5C7 6.5 17 7.5 17 11.5C17 15.5 7 16.5 7 20.5" stroke="#0d1117" stroke-width="1.6" stroke-linecap="round"/>
+            <path d="M17 2.5C17 6.5 7 7.5 7 11.5C7 15.5 17 16.5 17 20.5" stroke="#0d1117" stroke-width="1.6" stroke-linecap="round" opacity="0.5"/>
+            <line x1="7.6" y1="4.3" x2="16.4" y2="4.3" stroke="#0d1117" stroke-width="1.3" stroke-linecap="round"/>
+            <line x1="7" y1="11.5" x2="17" y2="11.5" stroke="#0d1117" stroke-width="1.3" stroke-linecap="round" opacity="0.6"/>
+            <line x1="7.6" y1="18.7" x2="16.4" y2="18.7" stroke="#0d1117" stroke-width="1.3" stroke-linecap="round"/>
+          </g>
+        </svg>
+      </span>
+      <span class="nav-logo-name">やまきたけいご<span class="nav-logo-sub">の部屋🐶</span></span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="/#about">自己紹介</a></li>
+      <li><a href="/research/">研究テーマ</a></li>
+      <li><a href="/#research">研究・発表</a></li>
+      <li><a href="/#awards">受賞歴</a></li>
+      <li><a href="/#works">制作物</a></li>
+      <li><a href="/#contact">連絡先</a></li>
+    </ul>
+    <div class="nav-actions">
+      <button class="nav-toggle" aria-label="メニューを開く">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
 
-<h2>主な機能（予定）</h2>
-<ul>
-  <li>書名・著者名で本を検索して本棚に登録</li>
-  <li>星1〜5の評価、感想、「楽しかった点」タグの記録</li>
-  <li>読みたい・読書中・読了の管理と本棚の並べ替え</li>
-  <li>高評価の本をもとにした関連本の提案（共通する著者・ジャンル・キーワードを理由として表示）</li>
-</ul>
+  <main class="page">
+    <section class="section">
+      <div class="container">
+        <nav class="breadcrumb" aria-label="パンくずリスト">
+          <ol>
+          <li><a href="/">トップ</a></li>
+          <li><a href="/#works">制作物</a></li>
+          <li aria-current="page">No Book No Life（仮称）</li>
+          </ol>
+        </nav>
+        <header class="page-head">
+          <p class="page-label">APP</p>
+          <h1 class="page-title">No Book No Life（仮称）</h1>
+          <p class="page-meta">iPhone向け読書記録アプリ（開発中）<br>提供者：山北啓吾（個人）</p>
+        </header>
 
-<h2>データの取り扱い</h2>
-<p>アカウント登録は不要です。読書記録は端末内に保存されます。詳しくは<a href="privacy.html">プライバシーポリシー</a>をご覧ください。</p>
+        <div class="prose page-block">
+            <p>読んだ本を記録し、星評価と「何が楽しかったか」をもとに、次に読む本を理由付きで提案するアプリです。現在開発中で、App Storeでは公開していません。</p>
 
-<h2>書誌データの出典</h2>
-<p>本の情報（書名・著者・書影・内容紹介・ジャンル・レビュー）は、楽天ブックス書籍検索API および Google Books API から取得しています。</p>
-<p>
-<!-- Rakuten Web Services Attribution Snippet FROM HERE -->
-<a href="https://developers.rakuten.com/" target="_blank">Supported by Rakuten Developers</a>
-<!-- Rakuten Web Services Attribution Snippet TO HERE -->
-</p>
+            <h2>主な機能（予定）</h2>
+            <ul>
+              <li>書名・著者名で本を検索して本棚に登録</li>
+              <li>星1〜5の評価、感想、「楽しかった点」タグの記録</li>
+              <li>読みたい・読書中・読了の管理と本棚の並べ替え</li>
+              <li>高評価の本をもとにした関連本の提案（共通する著者・ジャンル・キーワードを理由として表示）</li>
+            </ul>
 
-<h2>お問い合わせ</h2>
-<p>山北啓吾<br>メール：k5ykrennraku@gmail.com</p>
+            <h2>データの取り扱い</h2>
+            <p>アカウント登録は不要です。読書記録は端末内に保存されます。詳しくは<a href="privacy.html">プライバシーポリシー</a>をご覧ください。</p>
+
+            <h2>書誌データの出典</h2>
+            <p>本の情報（書名・著者・書影・内容紹介・ジャンル・レビュー）は、楽天ブックス書籍検索API および Google Books API から取得しています。</p>
+            <p>
+            <!-- Rakuten Web Services Attribution Snippet FROM HERE -->
+            <a href="https://developers.rakuten.com/" target="_blank">Supported by Rakuten Developers</a>
+            <!-- Rakuten Web Services Attribution Snippet TO HERE -->
+            </p>
+
+            <h2>お問い合わせ</h2>
+            <p>山北啓吾<br>メール：k5ykrennraku@gmail.com</p>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <nav class="footer-nav" aria-label="サイト内のページ">
+      <a href="/">トップ</a>
+      <a href="/research/">研究テーマ</a>
+      <a href="/benchmate/">BenchMate</a>
+      <a href="/houkalog/">訪花ログ</a>
+      <a href="/paperaday/">1日1本</a>
+      <a href="/contact/">アプリへのお問い合わせ</a>
+    </nav>
+    <p>&copy; 2026 山北啓吾. Built with HTML / CSS / JS.</p>
+  </footer>
+
+  <button id="backToTop" class="back-to-top" aria-label="トップへ戻る" title="トップへ戻る">
+    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <path d="M12 19V5M12 5L5 12M12 5L19 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  </button>
+
+  <script src="/js/sub.js?v=20261014b"></script>
+  <script src="/js/bg.js?v=20260919b"></script>
 </body>
 </html>
