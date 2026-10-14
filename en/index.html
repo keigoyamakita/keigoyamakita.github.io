@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/svg+xml" href="/images/favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="180x180" href="/images/apple-touch-icon.png">
+  <link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
+  <title>Keigo YAMAKITA｜Chromatin, Epigenomics &amp; Bioinformatics — Chiba University</title>
+  <meta name="description" content="Keigo YAMAKITA (山北啓吾), graduate student at Chiba University. Research on chromatin structure and genome stability using ATAC-seq and bioinformatics. Publications, presentations and awards, including the EMGS 2026 Student and Early Career Investigator Best Abstract Award.">
+  <meta name="keywords" content="Keigo Yamakita, Yamakita Keigo, 山北啓吾, Chiba University, ATAC-seq, chromatin, epigenomics, bioinformatics, non-genotoxic carcinogens, EMGS">
+  <meta name="author" content="Keigo Yamakita">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://keigoyamakita.com/en/">
+  <link rel="alternate" hreflang="ja" href="https://keigoyamakita.com/">
+  <link rel="alternate" hreflang="en" href="https://keigoyamakita.com/en/">
+  <link rel="alternate" hreflang="x-default" href="https://keigoyamakita.com/">
+
+  <!-- Open Graph / SNS -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://keigoyamakita.com/en/">
+  <meta property="og:title" content="Keigo YAMAKITA｜Chromatin, Epigenomics &amp; Bioinformatics">
+  <meta property="og:description" content="Graduate student at Chiba University studying chromatin structure and genome stability with ATAC-seq and bioinformatics.">
+  <meta property="og:image" content="https://keigoyamakita.com/images/ogp.png">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:locale:alternate" content="ja_JP">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Keigo YAMAKITA｜Chromatin, Epigenomics &amp; Bioinformatics">
+  <meta name="twitter:description" content="Graduate student at Chiba University studying chromatin structure and genome stability with ATAC-seq and bioinformatics.">
+  <meta name="twitter:image" content="https://keigoyamakita.com/images/ogp.png">
+
+  <!-- Structured data (JSON-LD) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Keigo Yamakita",
+    "alternateName": ["山北啓吾", "やまきたけいご", "Keigo YAMAKITA", "Yamakita Keigo"],
+    "url": "https://keigoyamakita.com/en/",
+    "image": "https://keigoyamakita.com/images/ogp.png",
+    "jobTitle": "Graduate Student (Master's Program)",
+    "description": "Graduate student at Chiba University studying chromatin structure, epigenomics and genome stability using ATAC-seq and bioinformatics.",
+    "affiliation": {
+      "@type": "Organization",
+      "name": "Department of Biology, Graduate School of Science and Engineering, Chiba University",
+      "url": "http://www.bio.s.chiba-u.ac.jp/index.html"
+    },
+    "alumniOf": { "@type": "CollegeOrUniversity", "name": "Chiba University" },
+    "award": [
+      "Student and Early Career Investigator Best Abstract Award, EMGS 2026 Annual Meeting",
+      "Best Presentation Award, 54th Annual Meeting of the Japanese Environmental Mutagen and Genome Society"
+    ],
+    "knowsAbout": ["Bioinformatics", "Epigenomics", "Chromatin structure", "ATAC-seq", "Genome stability", "Python", "R"],
+    "sameAs": [
+      "https://www.linkedin.com/in/keigoyamakita1024/",
+      "https://github.com/keigoyamakita",
+      "https://uralab.wordpress.com"
+    ]
+  }
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+JP:wght@400;500;600;700;900&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+JP:wght@400;500;600;700;900&display=swap" rel="stylesheet"></noscript>
+  <link rel="stylesheet" href="/css/style.css?v=20261014b">
+</head>
+<body>
+
+  <canvas id="bg-canvas" aria-hidden="true"></canvas>
+  <nav class="nav">
+    <a href="#hero" class="nav-logo">
+      <span class="nav-logo-mark" aria-hidden="true">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <g transform="rotate(22 12 11.5)">
+            <path d="M7 2.5C7 6.5 17 7.5 17 11.5C17 15.5 7 16.5 7 20.5" stroke="#0d1117" stroke-width="1.6" stroke-linecap="round"/>
+            <path d="M17 2.5C17 6.5 7 7.5 7 11.5C7 15.5 17 16.5 17 20.5" stroke="#0d1117" stroke-width="1.6" stroke-linecap="round" opacity="0.5"/>
+            <line x1="7.6" y1="4.3" x2="16.4" y2="4.3" stroke="#0d1117" stroke-width="1.3" stroke-linecap="round"/>
+            <line x1="7" y1="11.5" x2="17" y2="11.5" stroke="#0d1117" stroke-width="1.3" stroke-linecap="round" opacity="0.6"/>
+            <line x1="7.6" y1="18.7" x2="16.4" y2="18.7" stroke="#0d1117" stroke-width="1.3" stroke-linecap="round"/>
+          </g>
+        </svg>
+      </span>
+      <span class="nav-logo-name">Keigo YAMAKITA<span class="nav-logo-sub"> 🐶</span></span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#research">Publications</a></li>
+      <li><a href="#awards">Awards</a></li>
+      <li><a href="#contact">Contact</a></li>
+      <li class="nav-lang-item"><a href="/" hreflang="ja" lang="ja">日本語</a></li>
+    </ul>
+    <div class="nav-actions">
+      <a class="nav-lang" href="/" hreflang="ja" lang="ja" title="日本語ページへ">日本語</a>
+      <button class="nav-toggle" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section id="hero" class="hero">
+    <div class="container">
+      <div class="hero-inner">
+        <div class="hero-text">
+          <div class="hero-label">
+            <span class="hl-node">Life Science</span>
+            <span class="hl-connector" aria-hidden="true"></span>
+            <span class="hl-node">Data Analysis</span>
+            <span class="hl-connector" aria-hidden="true"></span>
+            <span class="hl-node">Problem Solving</span>
+          </div>
+          <h1>Keigo YAMAKITA<br><span class="hero-name-sub" lang="ja">山北 啓吾</span></h1>
+          <p class="hero-sub"><a href="http://www.bio.s.chiba-u.ac.jp/index.html" target="_blank" rel="noopener" class="hero-sub-link">Department of Biology, Graduate School of Science and Engineering, Chiba University, Japan</a></p>
+          <p class="hero-desc">
+            I study how chromatin structure relates to genome stability, using bioinformatics to read it out of sequencing data.
+            Combining wet-lab experiments with large-scale data analysis, I am building an ATAC-seq–based framework to assess the
+            non-genotoxic effects of chemicals on the genome.<br>
+            The portrait is AI-generated (the dogs on my shoulders are my own).
+          </p>
+          <div class="btn-group">
+            <a href="#research" class="btn btn-primary">Publications &amp; Presentations</a>
+            <a href="#contact" class="btn btn-outline">Contact</a>
+          </div>
+        </div>
+        <div class="avatar">
+          <img src="/images/profile-pixel.png?v=20260927a" alt="Keigo Yamakita" width="400" height="400" draggable="false">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section id="about" class="section">
+    <div class="container">
+      <details class="section-collapsible" open>
+        <summary class="section-title">About</summary>
+        <p class="section-sub">Background</p>
+        <div class="about-grid">
+          <div class="info-card wide">
+            <h3>Summary</h3>
+            <p>
+              After graduating from the Faculty of Science at Chiba University, I am now a master's student in the same university's graduate school,
+              working on chromatin metabolism. To quantitatively evaluate how chemicals and gene mutations affect chromatin structure and genome stability,
+              I develop next-generation sequencing workflows and evaluation methods centered on ATAC-seq. By combining <strong>wet-lab experiments</strong>
+              with <strong>bioinformatic analysis</strong> of large datasets, I aim to clarify how epigenomic changes influence innate immune responses and cancer risk.
+            </p>
+          </div>
+          <div class="info-card">
+            <h3>Affiliation</h3>
+            <p>
+              <a href="https://uralab.wordpress.com" target="_blank" rel="noopener" class="card-link"><span style="color:var(--accent2)">Laboratory of Chromatin Metabolism and Epigenetics (Ura–Sassa Lab), Chiba University</span></a><span class="org-period">（Nov 2024–）</span>
+            </p>
+          </div>
+          <div class="info-card">
+            <h3>Societies</h3>
+            <p>
+              <a href="https://emgs-us.org/" target="_blank" rel="noopener" class="card-link"><span style="color:var(--accent2)">Environmental Mutagenesis and Genomics Society (EMGS)</span></a><br>
+              <a href="https://www.j-ems.org/" target="_blank" rel="noopener" class="card-link"><span style="color:var(--accent2)">Japanese Environmental Mutagen and Genome Society (JEMS)</span></a><br>
+              <a href="https://www.mbsj.jp/" target="_blank" rel="noopener" class="card-link"><span style="color:var(--accent2)">Molecular Biology Society of Japan</span></a><br>
+              <a href="https://jsepi.org/" target="_blank" rel="noopener" class="card-link"><span style="color:var(--accent2)">Japanese Society for Epigenetics</span></a><br>
+              <a href="https://www.jsot.jp/" target="_blank" rel="noopener" class="card-link"><span style="color:var(--accent2)">Japanese Society of Toxicology</span></a>
+            </p>
+          </div>
+          <div class="info-card">
+            <h3>Research Interests</h3>
+            <p>Epigenomics · Chromatin accessibility<br>Genome stability · Bioinformatics</p>
+          </div>
+          <div class="info-card">
+            <h3>Degree</h3>
+            <p>Master's program (in progress)</p>
+          </div>
+        </div>
+      </details>
+    </div>
+  </section>
+
+  <!-- Research -->
+  <section id="research" class="section section-alt">
+    <div class="container">
+      <details class="section-collapsible" open>
+        <summary class="section-title">Publications &amp; Presentations</summary>
+        <p class="section-sub">Journal articles and conference presentations (including co-authored). Titles of presentations given in Japanese are translated.</p>
+
+        <div class="subsection-block" id="anchor-papers">
+          <h3 class="subsection-heading">Journal Articles</h3>
+          <div class="pub-list">
+            <div class="pub-item">
+              <div class="pub-year">2025 · 📄 Journal Article</div>
+              <div class="pub-title">Dual-directional epi-genotoxicity assay for assessing chemically induced epigenetic effects utilizing the housekeeping <i>TK</i> gene</div>
+              <div class="pub-venue"><span style="color:var(--text)">Haruto Yamada, Mizuki Odagiri, <span class="me">Keigo YAMAKITA</span>, et al.</span> · <span class="pub-venue-name"><i>Scientific Reports</i> 15, 7780 (2025)</span></div>
+              <div class="pub-tags"><span class="tag">Epigenome</span><span class="tag">Genotoxicity</span><span class="tag"><i>TK</i> gene</span></div>
+              <a class="pub-link" href="https://doi.org/10.1038/s41598-025-92121-6" target="_blank" rel="noopener">doi:10.1038/s41598-025-92121-6 →</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="subsection-block" id="anchor-presentations">
+          <h3 class="subsection-heading">Conference Presentations</h3>
+          <div class="pub-list">
+            <a class="pub-item pub-item-link" href="https://emgs-us.org/page/2026_EMGS" target="_blank" rel="noopener">
+              <div class="pub-year">Oct 12, 2026 · 🖼️🎤 Poster &amp; Oral (English)</div>
+              <div class="pub-title">Establishment of a Chromatin Dynamics-Based Assessment Framework for Non-Genotoxic Carcinogens</div>
+              <div class="pub-venue"><span style="color:var(--text)"><span class="me">Keigo YAMAKITA</span>, and 7 co-authors</span> · <span class="pub-venue-name">2026 EMGS Annual Meeting (online)</span></div>
+              <div class="pub-tags"><span class="tag">ATAC-seq</span><span class="tag">Non-genotoxic</span><span class="tag">International</span><span class="tag">🏆 Best Abstract Award</span></div>
+            </a>
+            <a class="pub-item pub-item-link" href="https://www.bioinfowakate.org/activities/meetings/%E7%AC%AC18%E5%9B%9E-%E5%B9%B4%E4%BC%9A" target="_blank" rel="noopener">
+              <div class="pub-year">Oct 2, 2026 · 🖼️ Poster</div>
+              <div class="pub-title">A new chromatin structure-based index for assessing the effects of chemicals</div>
+              <div class="pub-venue"><span style="color:var(--text)"><span class="me">Keigo YAMAKITA</span>, and 1 co-author</span> · <span class="pub-venue-name">18th Annual Meeting of the Young Researchers' Society for Bioinformatics (Kanagawa, Japan)</span></div>
+              <div class="pub-tags"><span class="tag">ATAC-seq</span><span class="tag">Chromatin structure</span><span class="tag">In Japanese</span></div>
+            </a>
+            <a class="pub-item pub-item-link" href="https://uralab.wordpress.com/conferences/" target="_blank" rel="noopener">
+              <div class="pub-year">Jul 30, 2026 · 🎤 Oral</div>
+              <div class="pub-title">An ATAC-seq–based method for evaluating non-genotoxic effects using chromatin structure as a reference</div>
+              <div class="pub-venue"><span style="color:var(--text)"><span class="me">Keigo YAMAKITA</span></span> · <span class="pub-venue-name">37th Summer School of the Mutation Mechanism Research Group (Osaka, Japan)</span></div>
+              <div class="pub-tags"><span class="tag">ATAC-seq</span><span class="tag">Non-genotoxic</span><span class="tag">In Japanese</span></div>
+            </a>
+          </div>
+          <div class="pub-list pub-list-rest" id="presentationRest" hidden>
+            <a class="pub-item pub-item-link" href="https://uralab.wordpress.com/conferences/" target="_blank" rel="noopener">
+              <div class="pub-year">Jul 8, 2026 · 🖼️ Poster</div>
+              <div class="pub-title">Chronic genomic stress induces elevated A-to-I RNA editing in transcripts associated with auxiliary DNA repair pathways</div>
+              <div class="pub-venue"><span style="color:var(--text)">Sujin Song, <span class="me">Keigo YAMAKITA</span>, et al.</span> · <span class="pub-venue-name">27th Annual Meeting of the RNA Society of Japan (Hyogo, Japan)</span></div>
+              <div class="pub-tags"><span class="tag">RNA editing</span><span class="tag">DNA repair</span></div>
+            </a>
+            <a class="pub-item pub-item-link" href="https://uralab.wordpress.com/conferences/" target="_blank" rel="noopener">
+              <div class="pub-year">Jul 1, 2026 · 🖼️🎤 Poster &amp; Oral</div>
+              <div class="pub-title">Establishment of a chromatin structure-based method for evaluating non-genotoxic genome instability using ATAC-seq</div>
+              <div class="pub-venue"><span style="color:var(--text)"><span class="me">Keigo YAMAKITA</span>, and 7 co-authors</span> · <span class="pub-venue-name">53rd Annual Meeting of the Japanese Society of Toxicology (Osaka, Japan)</span></div>
+              <div class="pub-tags"><span class="tag">ATAC-seq</span><span class="tag">Chromatin structure</span><span class="tag">Non-genotoxic</span></div>
+            </a>
+            <a class="pub-item pub-item-link" href="https://uralab.wordpress.com/conferences/" target="_blank" rel="noopener">
+              <div class="pub-year">Jun 25, 2026 · 🖼️ Poster</div>
+              <div class="pub-title">Evaluation indices for non-genotoxic genome instability based on chromatin accessibility analysis</div>
+              <div class="pub-venue"><span style="color:var(--text)"><span class="me">Keigo YAMAKITA</span>, and 7 co-authors</span> · <span class="pub-venue-name">19th Annual Meeting of the Japanese Society for Epigenetics (Chiba, Japan)</span></div>
+              <div class="pub-tags"><span class="tag">ATAC-seq</span><span class="tag">Epigenome</span><span class="tag">In Japanese</span></div>
+            </a>
+            <a class="pub-item pub-item-link" href="https://uralab.wordpress.com/2025/11/26/1-12/" target="_blank" rel="noopener">
+              <div class="pub-year">Nov 22, 2025 · 🖼️🎤 Poster &amp; Oral</div>
+              <div class="pub-title">An ATAC-seq–based method for evaluating higher-order genome instability using chromatin structure as a reference</div>
+              <div class="pub-venue"><span style="color:var(--text)"><span class="me">Keigo YAMAKITA</span>, and 7 co-authors</span> · <span class="pub-venue-name">54th Annual Meeting of the Japanese Environmental Mutagen and Genome Society (Shizuoka, Japan)</span></div>
+              <div class="pub-tags"><span class="tag">ATAC-seq</span><span class="tag">Chromatin</span><span class="tag">🏆 Best Presentation Award</span><span class="tag">In Japanese</span></div>
+            </a>
+            <a class="pub-item pub-item-link" href="https://uralab.wordpress.com/conferences/" target="_blank" rel="noopener">
+              <div class="pub-year">Nov 22, 2025 · 🖼️ Poster</div>
+              <div class="pub-title">Interplay between the DNA damage response and inosine RNA modification</div>
+              <div class="pub-venue"><span style="color:var(--text)">Sujin Song, <span class="me">Keigo YAMAKITA</span>, et al.</span> · <span class="pub-venue-name">54th Annual Meeting of the Japanese Environmental Mutagen and Genome Society (Shizuoka, Japan)</span></div>
+              <div class="pub-tags"><span class="tag">In Japanese</span></div>
+            </a>
+            <a class="pub-item pub-item-link" href="https://uralab.wordpress.com/conferences/" target="_blank" rel="noopener">
+              <div class="pub-year">Nov 22, 2025 · 🖼️ Poster</div>
+              <div class="pub-title">Mechanism of the innate immune response induced by RNase H2 dysfunction without DNA strand breaks</div>
+              <div class="pub-venue"><span style="color:var(--text)">Tanaka, <span class="me">Keigo YAMAKITA</span>, et al.</span> · <span class="pub-venue-name">54th Annual Meeting of the Japanese Environmental Mutagen and Genome Society (Shizuoka, Japan)</span></div>
+              <div class="pub-tags"><span class="tag">In Japanese</span></div>
+            </a>
+            <a class="pub-item pub-item-link" href="https://uralab.wordpress.com/conferences/" target="_blank" rel="noopener">
+              <div class="pub-year">Jul 15, 2025 · 🖼️🎤 Poster &amp; Oral (English)</div>
+              <div class="pub-title">Identification of the Novel Crosstalk Between DNA Damage Response and RNA Modifications</div>
+              <div class="pub-venue"><span style="color:var(--text)">Sujin Song, <span class="me">Keigo YAMAKITA</span>, et al.</span> · <span class="pub-venue-name">Summer School on Genome Stability 2025 (Montpellier, France)</span></div>
+              <div class="pub-tags"><span class="tag">RNA editing</span><span class="tag">DNA repair</span><span class="tag">International</span></div>
+            </a>
+            <a class="pub-item pub-item-link" href="https://uralab.wordpress.com/conferences/" target="_blank" rel="noopener">
+              <div class="pub-year">Jul 2025 · 🎤 Oral</div>
+              <div class="pub-title">A method for evaluating higher-order genome instability using chromatin structure as an index</div>
+              <div class="pub-venue"><span style="color:var(--text)"><span class="me">Keigo YAMAKITA</span></span> · <span class="pub-venue-name">36th Summer School of the Mutation Mechanism Research Group (Tokyo, Japan)</span></div>
+              <div class="pub-tags"><span class="tag">In Japanese</span></div>
+            </a>
+            <a class="pub-item pub-item-link" href="https://uralab.wordpress.com/conferences/" target="_blank" rel="noopener">
+              <div class="pub-year">Dec 7, 2024 · 🖼️ Poster</div>
+              <div class="pub-title">Assessment of higher-order genome instability based on chromatin structural changes detected by ATAC-seq</div>
+              <div class="pub-venue"><span style="color:var(--text)"><span class="me">Keigo YAMAKITA</span>, and 7 co-authors</span> · <span class="pub-venue-name">53rd Annual Meeting of the Japanese Environmental Mutagen and Genome Society (Okayama, Japan)</span></div>
+              <div class="pub-tags"><span class="tag">ATAC-seq</span><span class="tag">In Japanese</span></div>
+            </a>
+            <a class="pub-item pub-item-link" href="https://uralab.wordpress.com/conferences/" target="_blank" rel="noopener">
+              <div class="pub-year">Nov 27, 2024 · 🖼️ Poster</div>
+              <div class="pub-title">A dual-directional reporter assay for evaluating chemically induced epigenetic effects</div>
+              <div class="pub-venue"><span style="color:var(--text)">Haruto Yamada, <span class="me">Keigo YAMAKITA</span>, et al.</span> · <span class="pub-venue-name">47th Annual Meeting of the Molecular Biology Society of Japan (Fukuoka, Japan)</span></div>
+              <div class="pub-tags"><span class="tag">In Japanese</span></div>
+            </a>
+            <a class="pub-item pub-item-link" href="https://uralab.wordpress.com/conferences/" target="_blank" rel="noopener">
+              <div class="pub-year">Sep 19, 2024 · 🖼️🎤 Poster &amp; Oral</div>
+              <div class="pub-title">Roles of the nucleic acid sensors cGAS and IFI16 in the interferon response caused by DNA strand breaks</div>
+              <div class="pub-venue"><span style="color:var(--text)">Nao Terakoshi, <span class="me">Keigo YAMAKITA</span>, et al.</span> · <span class="pub-venue-name">31st Annual Meeting of the Japanese Society of Immunotoxicology (Hyogo, Japan)</span></div>
+              <div class="pub-tags"><span class="tag">In Japanese</span></div>
+            </a>
+            <a class="pub-item pub-item-link" href="https://uralab.wordpress.com/conferences/" target="_blank" rel="noopener">
+              <div class="pub-year">Sep 19, 2024 · 🖼️ Poster</div>
+              <div class="pub-title">Mechanism of the innate immune response induced by DNA repair dysfunction without DNA strand breaks</div>
+              <div class="pub-venue"><span style="color:var(--text)">Tanaka, <span class="me">Keigo YAMAKITA</span>, et al.</span> · <span class="pub-venue-name">31st Annual Meeting of the Japanese Society of Immunotoxicology (Hyogo, Japan)</span></div>
+              <div class="pub-tags"><span class="tag">In Japanese</span></div>
+            </a>
+            <a class="pub-item pub-item-link" href="https://uralab.wordpress.com/conferences/" target="_blank" rel="noopener">
+              <div class="pub-year">Sep 16, 2024 · 🎤 Oral (English)</div>
+              <div class="pub-title">Gutenberg Workshop RNase H 2024: Structures, Functions and Disorders</div>
+              <div class="pub-venue"><span style="color:var(--text)">Kazuma Nakatani, Nao Terakoshi, <span class="me">Keigo YAMAKITA</span>, et al.</span> · <span class="pub-venue-name">Gutenberg Workshop RNase H 2024 (Mainz, Germany)</span></div>
+              <div class="pub-tags"><span class="tag">International</span></div>
+            </a>
+          </div>
+          <button type="button" class="show-more-btn" id="presentationToggle" aria-expanded="false" aria-controls="presentationRest">Show all (13 more)</button>
+        </div>
+
+        <p class="research-more"><a href="/research/" target="_blank" rel="noopener" hreflang="ja">Research overview: assessing chromatin structure with ATAC-seq (in Japanese) →</a></p>
+      </details>
+    </div>
+  </section>
+
+  <!-- Awards -->
+  <section id="awards" class="section">
+    <div class="container">
+      <details class="section-collapsible" open>
+        <summary class="section-title">Awards</summary>
+        <p class="section-sub">Society awards and honors</p>
+        <div class="subsection-block" id="anchor-awards">
+          <div class="pub-list">
+            <a class="pub-item pub-item-link" href="https://emgs-us.org/page/2026_EMGS" target="_blank" rel="noopener">
+              <div class="pub-year">Oct 12, 2026 · 🏆 Society Award</div>
+              <div class="pub-title">Student and Early Career Investigator Best Abstract Award</div>
+              <div class="pub-venue">Environmental Mutagenesis and Genomics Society (EMGS), 2026 Annual Meeting (online)</div>
+            </a>
+            <a class="pub-item pub-item-link" href="https://uralab.wordpress.com/2025/11/26/1-12/" target="_blank" rel="noopener">
+              <div class="pub-year">2025 · 🏆 Society Award</div>
+              <div class="pub-title">Best Presentation Award</div>
+              <div class="pub-venue">54th Annual Meeting of the Japanese Environmental Mutagen and Genome Society (JEMS), Shizuoka, Japan</div>
+            </a>
+            <div class="pub-item">
+              <div class="pub-year">2024 · 🎖️ Honor</div>
+              <div class="pub-title">President's Award, Faculty of Science Supporters' Association</div>
+              <div class="pub-venue">Faculty of Science, Chiba University</div>
+            </div>
+          </div>
+        </div>
+      </details>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact" class="section">
+    <div class="container">
+      <h2 class="section-title">Contact</h2>
+      <p class="section-sub">Feel free to get in touch.</p>
+      <div class="contact-grid">
+        <a class="contact-item" id="mailLink" href="#contact" target="_blank" rel="noopener">
+          <div class="contact-icon">✉</div>
+          <div class="contact-info"><strong>Email</strong><small>k5ykrennraku{at}gmail.com</small></div>
+        </a>
+        <a class="contact-item" href="https://www.linkedin.com/in/keigoyamakita1024/" target="_blank" rel="noopener">
+          <div class="contact-icon">💼</div>
+          <div class="contact-info"><strong>LinkedIn</strong><small>keigoyamakita1024</small></div>
+        </a>
+        <a class="contact-item" href="https://github.com/keigoyamakita" target="_blank" rel="noopener">
+          <div class="contact-icon">🐙</div>
+          <div class="contact-info"><strong>GitHub</strong><small>@keigoyamakita</small></div>
+        </a>
+        <a class="contact-item" href="https://uralab.wordpress.com" target="_blank" rel="noopener">
+          <div class="contact-icon">🔬</div>
+          <div class="contact-info"><strong>Laboratory</strong><small>Chromatin Metabolism and Epigenetics</small></div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <nav class="footer-nav" aria-label="Site pages">
+      <a href="/" hreflang="ja">日本語トップ</a>
+      <a href="/research/" target="_blank" rel="noopener" hreflang="ja">Research overview (JA)</a>
+    </nav>
+    <p>&copy; <span id="year"></span> Keigo Yamakita. Built with HTML / CSS / JS.</p>
+  </footer>
+
+  <button id="backToTop" class="back-to-top" aria-label="Back to top" title="Back to top">
+    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <path d="M12 19V5M12 5L5 12M12 5L19 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  </button>
+
+  <script src="/js/sub.js?v=20261014c"></script>
+  <script>
+  (function () {
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Email address is assembled at runtime (spam harvesting countermeasure)
+    var mail = document.getElementById('mailLink');
+    if (mail) mail.href = 'mailto:' + ['k5ykrennraku', 'gmail.com'].join('@');
+
+    // In-page smooth scroll (offset for the fixed nav)
+    document.querySelectorAll('a[href^="#"]').forEach(function (a) {
+      if (a.id === 'mailLink') return;
+      a.addEventListener('click', function (e) {
+        var t = document.querySelector(a.getAttribute('href'));
+        if (!t) return;
+        e.preventDefault();
+        window.scrollTo({ top: t.getBoundingClientRect().top + scrollY - 68, behavior: 'smooth' });
+      });
+    });
+
+    // "Show all" toggle for presentations
+    var toggle = document.getElementById('presentationToggle');
+    var rest = document.getElementById('presentationRest');
+    if (toggle && rest) {
+      var more = 'Show all (' + rest.children.length + ' more)';
+      toggle.textContent = more;
+      toggle.addEventListener('click', function () {
+        var open = toggle.getAttribute('aria-expanded') !== 'true';
+        toggle.setAttribute('aria-expanded', String(open));
+        rest.hidden = !open;
+        toggle.textContent = open ? 'Show less' : more;
+      });
+    }
+
+    // Discourage casual image saving (same as the Japanese page)
+    document.addEventListener('contextmenu', function (e) {
+      if (e.target.closest && e.target.closest('img, .avatar')) e.preventDefault();
+    });
+    document.addEventListener('dragstart', function (e) {
+      if (e.target.tagName === 'IMG') e.preventDefault();
+    });
+  })();
+  </script>
+  <script src="/js/bg.js?v=20260919b"></script>
+</body>
+</html>
